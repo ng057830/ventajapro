@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de Valor Esperado (+EV) | Apuestas Inteligentes</title>
@@ -38,6 +47,21 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ventajabets.com/valor-esperado-apuestas.html#webapp",
+        "url": "https://ventajabets.com/valor-esperado-apuestas.html",
+        "name": "Calculadora de Valor Esperado (+EV)",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Calculadora para calcular el valor esperado (+EV) de tus cuotas y ganarle al margen de la casa.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
       {
         "@type": "Organization",
         "@id": "https://ventajabets.com/#organization",
@@ -302,14 +326,16 @@
       </div>
     </section>
 
-    <!-- CALL TO ACTION -->
-    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
-      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Únete a los apostadores que juegan con ventaja</h3>
-      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
-        Accede al método VentajaBets y recibe alertas diarias de cuotas +EV detectadas en tiempo real.
-      </p>
-      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;" data-bind="country-cta-btn" data-base-text="Acceder de por vida">Acceder de por vida ($69.900 COP)</a>
-    </section>
+      <!-- CALL TO ACTION DE AFILIADOS -->
+  <section class="card card-glow-green" id="affiliate-cta-section" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+    <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Prueba tus jugadas en operadores regulados</h3>
+    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+      Regístrate en nuestros operadores recomendados, reclama tu bono de bienvenida y aplica la calculadora para jugar con ventaja matemática.
+    </p>
+    <div id="calculator-partners-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem;">
+      <!-- Se inyecta dinámicamente según el país desde scripts.js -->
+    </div>
+  </section>
 
   </main>
 

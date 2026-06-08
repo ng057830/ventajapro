@@ -4,13 +4,12 @@ window.COUNTRY_CONFIG = {
     name: 'Colombia',
     flag: '🇨🇴',
     currency: 'COP',
-    price: 69900,
-    priceDisplay: '$69.900',
     league: 'Mundial 2026',
     teams: ['Colombia', 'Portugal', 'Uzbekistán'],
     partners: [
-      { name: 'Codere Colombia', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $100.000 COP | Registrarme' },
-      { name: 'Wplay', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $200.000 COP | Registrarme' }
+      { name: 'Wplay', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $200.000 COP | Registrarme' },
+      { name: 'Rushbet', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $20.000 COP | Registrarme' },
+      { name: 'Codere Colombia', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $100.000 COP | Registrarme' }
     ],
     legal: 'Juego regulado por Coljuegos en Colombia',
     regulatorName: 'Coljuegos Colombia',
@@ -27,13 +26,12 @@ window.COUNTRY_CONFIG = {
     name: 'México',
     flag: '🇲🇽',
     currency: 'MXN',
-    price: 850,
-    priceDisplay: '$850',
     league: 'Mundial 2026',
     teams: ['México', 'Sudáfrica', 'Corea del Sur'],
     partners: [
-      { name: 'Caliente MX', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $3.000 MXN | Registrarme' },
-      { name: 'Codere México', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono Triple $5.000 MXN | Registrarme' }
+      { name: 'Codere México', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono Triple $5.000 MXN | Registrarme' },
+      { name: '1xBet México', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $3.500 MXN | Registrarme' },
+      { name: 'Caliente MX', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono $3.000 MXN | Registrarme' }
     ],
     legal: 'Juego autorizado por la SEGOB en México',
     regulatorName: 'SEGOB México',
@@ -50,8 +48,6 @@ window.COUNTRY_CONFIG = {
     name: 'España',
     flag: '🇪🇸',
     currency: 'EUR',
-    price: 43,
-    priceDisplay: '€43',
     league: 'Mundial 2026',
     teams: ['España', 'Uruguay', 'Arabia Saudita'],
     partners: [
@@ -73,12 +69,11 @@ window.COUNTRY_CONFIG = {
     name: 'Perú',
     flag: '🇵🇪',
     currency: 'PEN',
-    price: 170,
-    priceDisplay: 'S/170',
     league: 'Mundial 2026',
     teams: ['Uruguay', 'España', 'Argentina'],
     partners: [
       { name: 'Betano Perú', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono S/500 | Registrarme' },
+      { name: '1xBet Perú', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono S/450 | Registrarme' },
       { name: 'Inkabet', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Bono S/400 | Registrarme' }
     ],
     legal: 'Juego regulado por el MINCETUR en Perú',
@@ -96,12 +91,11 @@ window.COUNTRY_CONFIG = {
     name: 'Internacional',
     flag: '🌐',
     currency: 'USD',
-    price: 47,
-    priceDisplay: '$47',
     league: 'Mundial 2026',
     teams: ['Colombia', 'Portugal', 'Uruguay'],
     partners: [
-      { name: 'Bet365 Internacional', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Ver bono / Registrarme' }
+      { name: 'Bet365 Internacional', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Ver bono / Registrarme' },
+      { name: '1xBet', url: 'https://c.afiliago.com/click.asp?c=356&p=64', label: 'Ver bono / Registrarme' }
     ],
     legal: 'Verifica la regulación del juego local en tu país',
     regulatorName: 'Juego Responsable',

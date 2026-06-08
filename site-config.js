@@ -1,37 +1,41 @@
 // CONFIGURACIÓN COMERCIAL ACTIVA - VentajaBets (site-config.js)
-// Modifica aquí tus enlaces de Hotmart, Mercado Pago y Afiliados
+// Modifica aquí tus enlaces de Afiliados y Partners recomendados
 
 window.VB_COMMERCIAL_CONFIG = {
-  // 1. Checkout principal de Hotmart (Precio base $47 USD)
-  checkoutUrlGlobal: "https://pay.hotmart.com/YOUR_HOTMART_PRODUCT_ID?checkoutMode=10",
-  
-  // 2. Checkout local de Mercado Pago / PSE (Solo para Colombia, precio fijo $69.900 COP)
-  checkoutUrlCO: "https://www.mercadopago.com.co/checkout/v1/redirect?pref_id=YOUR_MERCADO_PAGO_PREFERENCE_ID",
-  
-  // 3. Enlaces de afiliados (AfiliaGo, NetHive, Codere Partners, etc.)
+  // Enlaces de afiliados (AfiliaGo, NetHive, Codere Partners, etc.)
   partnerCampaigns: {
     CO: [
-      {
-        name: "Codere Colombia",
-        url: "https://c.afiliago.com/click.asp?c=356&p=64",
-        label: "Bono $100.000 COP | Registrarme"
-      },
       {
         name: "Wplay",
         url: "https://c.afiliago.com/click.asp?c=356&p=64",
         label: "Bono $200.000 COP | Registrarme"
+      },
+      {
+        name: "Rushbet",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Bono $20.000 COP | Registrarme"
+      },
+      {
+        name: "Codere Colombia",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Bono $100.000 COP | Registrarme"
       }
     ],
     MX: [
       {
-        name: "Caliente MX",
-        url: "https://c.afiliago.com/click.asp?c=356&p=64",
-        label: "Bono $3.000 MXN | Registrarme"
-      },
-      {
         name: "Codere México",
         url: "https://c.afiliago.com/click.asp?c=356&p=64",
         label: "Bono Triple $5.000 MXN | Registrarme"
+      },
+      {
+        name: "1xBet México",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Bono $3.500 MXN | Registrarme"
+      },
+      {
+        name: "Caliente MX",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Bono $3.000 MXN | Registrarme"
       }
     ],
     ES: [
@@ -53,6 +57,11 @@ window.VB_COMMERCIAL_CONFIG = {
         label: "Bono S/500 | Registrarme"
       },
       {
+        name: "1xBet Perú",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Bono S/450 | Registrarme"
+      },
+      {
         name: "Inkabet",
         url: "https://c.afiliago.com/click.asp?c=356&p=64",
         label: "Bono S/400 | Registrarme"
@@ -61,6 +70,11 @@ window.VB_COMMERCIAL_CONFIG = {
     DEFAULT: [
       {
         name: "Bet365 Internacional",
+        url: "https://c.afiliago.com/click.asp?c=356&p=64",
+        label: "Ver bono / Registrarme"
+      },
+      {
+        name: "1xBet",
         url: "https://c.afiliago.com/click.asp?c=356&p=64",
         label: "Ver bono / Registrarme"
       }

@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora Apuestas: Encuentra tu Ventaja | VentajaBets</title>
   
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
   <!-- SEO Meta Tags -->
   <meta name="description" content="Descubre si tu jugada conviene antes de perder plata con la calculadora de apuestas de VentajaBets. Evita trampas de las casas y juega inteligente. ¡Prueba gratis!">
   <meta name="keywords" content="calculadora apuestas, herramientas apuestas, valor esperado apuestas, apuestas seguras colombia, trucos de apuestas, apostar con cabeza, VentajaBets">
@@ -199,19 +208,16 @@
     </div>
   </section>
 
-  <!-- SYSTEM PROMOTION BANNER -->
-  <section class="section section-alt" id="systema-promo-section" style="padding: 3rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+  <!-- RECOMMENDED PARTNERS BANNER -->
+  <section class="section section-alt" id="partners-promo-section" style="padding: 3rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
     <div class="container">
-      <div class="card card-glow-green" style="padding: 2rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;">
-        <div style="flex: 1 1 400px; min-width: 280px;">
-          <span class="hero-tag" style="margin-bottom: 0.5rem;">SISTEMA COMPLETO</span>
-          <h2 style="font-size: 1.8rem; margin-bottom: 1rem; font-family: var(--font-heading);" data-bind="country-promo-title">Consigue el Sistema "VentajaBets" por $69.900 COP</h2>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">Deja de regalarle tu dinero a las casas. Consigue acceso de por vida a nuestro método de ventaja matemática, calculadoras profesionales y el canal privado de alertas de WhatsApp/Telegram.</p>
-          <a href="sistema.html" class="btn btn-primary">Ver el Sistema Completo</a>
-        </div>
-        <div style="flex: 1 1 300px; max-width: 420px; display: flex; justify-content: center; width: 100%;">
-          <img src="assets/laptop_charts_preview.png" alt="Sistema VentajaBets Preview" style="width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-glow); display: block;">
-        </div>
+      <div class="section-header" style="margin-bottom: 2rem; text-align: center;">
+        <span class="tag">Casas de Apuestas</span>
+        <h2>Opera en Casas Reguladas y Juega con Ventaja</h2>
+        <p style="max-width: 600px; margin: 0.5rem auto 0 auto;">Aprovecha los bonos de bienvenida para registrarte en operadores autorizados de tu país, obtener saldo adicional y aplicar nuestras calculadoras gratuitas.</p>
+      </div>
+      <div id="home-partners-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto;">
+        <!-- Se inyecta dinámicamente según el país desde scripts.js -->
       </div>
     </div>
   </section>

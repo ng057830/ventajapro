@@ -1299,9 +1299,6 @@ window.renderCountryContent = function(country) {
           el.textContent = `(${config.currency})`;
         }
         break;
-      case 'country-price':
-        el.textContent = config.priceDisplay;
-        break;
       case 'country-payments':
         el.textContent = config.paymentMethods;
         break;
@@ -1323,21 +1320,6 @@ window.renderCountryContent = function(country) {
         break;
       case 'country-example-bookie':
         el.textContent = config.examples.bookie;
-        break;
-      case 'country-promo-title':
-        if (country === 'DEFAULT') {
-          el.textContent = 'Consigue el Sistema "VentajaBets" Pro';
-        } else {
-          el.textContent = `Consigue el Sistema "VentajaBets" por ${config.priceDisplay} ${config.currency}`;
-        }
-        break;
-      case 'country-cta-btn':
-        const baseText = el.getAttribute('data-base-text') || 'Obtener Acceso';
-        if (country === 'DEFAULT') {
-          el.textContent = baseText;
-        } else {
-          el.textContent = `${baseText} (${config.priceDisplay} ${config.currency})`;
-        }
         break;
     }
   });
@@ -1362,9 +1344,19 @@ window.renderCountryContent = function(country) {
     window.renderPartnerCards(country);
   }
 
-  // 6. Configurar botones de pago dinámicos en sistema.html
-  if (window.location.pathname.includes('sistema.html')) {
-    window.setupCommercialView(country, config);
+  // 6. Inyectar dinámicamente partners de calculadoras si el contenedor existe
+  if (document.getElementById('calculator-partners-container')) {
+    window.renderCalculatorPartners(country);
+  }
+
+  // 7. Inyectar dinámicamente partners en la página principal si el contenedor existe
+  if (document.getElementById('home-partners-container')) {
+    window.renderHomePartners(country);
+  }
+
+  // 8. Inyectar dinámicamente partners en la página del método si el contenedor existe
+  if (document.getElementById('method-partners-container')) {
+    window.renderMethodPartners(country);
   }
 };
 
@@ -1472,92 +1464,97 @@ window.renderPartnerCards = function(country) {
           Casa de apuestas recomendada con licencia autorizada en tu país. Regístrate usando nuestro enlace de partner para apoyar el mantenimiento de la suite gratuita y activar promociones especiales.
         </p>
       </div>
-      <a href="${partner.url}" target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary btn-block" style="font-size: 0.9rem;">
+      <a href="${partner.url}" target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary btn-block partner-affiliate-link" data-partner-name="${partner.name}" style="font-size: 0.9rem;">
         ${partner.label}
       </a>
     </div>
   `).join('');
 };
 
-window.setupCommercialView = function(country, config) {
-  const btnBuyNow = document.getElementById('btn-buy-now');
-  const mpSection = document.getElementById('mercadopago-co-section');
-  const priceDisplay = document.getElementById('price-display');
+window.renderCalculatorPartners = function(country) {
+  const container = document.getElementById('calculator-partners-container');
+  if (!container) return;
 
-  // 1. Mostrar Mercado Pago + PSE solo si el país es Colombia (CO)
-  if (mpSection) {
-    if (country === 'CO') {
-      mpSection.style.display = 'block';
-    } else {
-      mpSection.style.display = 'none';
-    }
-  }
+  const config = (window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[country]) ? window.COUNTRY_CONFIG[country] : window.COUNTRY_CONFIG['DEFAULT'];
+  if (!config || !config.partners || config.partners.length === 0) return;
 
-  // 2. Modificar el texto del botón principal y las etiquetas de precios
-  if (country === 'DEFAULT') {
-    if (priceDisplay) {
-      priceDisplay.innerHTML = `
-        <strong style="font-size: 1.8rem; color: var(--primary); font-family: var(--font-heading); display: block; line-height: 1.2;">Acceso de por Vida</strong>
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">Consulta el precio en tu moneda local al ir al checkout.</span>
-      `;
-    }
-    if (btnBuyNow) {
-      btnBuyNow.innerHTML = `Comprar VentajaBets Pro`;
-      btnBuyNow.setAttribute('onclick', `window.openCheckoutGlobal()`);
-    }
-  } else {
-    if (priceDisplay) {
-      priceDisplay.innerHTML = `
-        <span style="font-size: 1rem; color: var(--text-muted); text-decoration: line-through;" id="regular-price-label"></span>
-        <strong style="font-size: 2.8rem; color: var(--primary); font-family: var(--font-heading); display: block; line-height: 1;" id="active-price-label"></strong>
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">Pago único. Sin mensualidades.</span>
-      `;
-    }
-
-    const activePriceLabel = document.getElementById('active-price-label');
-    const regularPriceLabel = document.getElementById('regular-price-label');
-
-    if (activePriceLabel) {
-      activePriceLabel.innerHTML = `${config.priceDisplay} ${config.currency}`;
-    }
-    if (regularPriceLabel) {
-      let regularStr = '';
-      if (country === 'CO') regularStr = '$149.900 COP';
-      else if (country === 'MX') regularStr = '$1.700 MXN';
-      else if (country === 'ES') regularStr = '€86';
-      else if (country === 'PE') regularStr = 'S/340';
-      regularPriceLabel.innerHTML = regularStr;
-    }
-
-    if (btnBuyNow) {
-      btnBuyNow.innerHTML = `Comprar VentajaBets Pro (${config.priceDisplay} ${config.currency})`;
-      btnBuyNow.setAttribute('onclick', `window.openCheckoutGlobal()`);
-    }
-  }
+  container.innerHTML = config.partners.map(partner => `
+    <div class="card card-glow-green" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem; text-align: left;">
+      <div>
+        <h4 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.25rem;">${partner.name}</h4>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 1rem;">
+          Regístrate con nuestro enlace oficial y reclama tu bono: <strong>${partner.label.split('|')[0]}</strong>.
+        </p>
+      </div>
+      <a href="${partner.url}" target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary btn-block partner-affiliate-link" data-partner-name="${partner.name}" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; text-align: center;">
+        Regístrame en ${partner.name} y Probar
+      </a>
+    </div>
+  `).join('');
 };
 
+window.renderHomePartners = function(country) {
+  const container = document.getElementById('home-partners-container');
+  if (!container) return;
 
-window.openCheckoutGlobal = function() {
-  const config = window.VB_COMMERCIAL_CONFIG;
-  if (config && config.checkoutUrlGlobal && !config.checkoutUrlGlobal.includes('YOUR_HOTMART_PRODUCT_ID')) {
-    window.open(config.checkoutUrlGlobal, '_blank');
-  } else {
-    window.showToast('Checkout de Hotmart temporalmente fuera de servicio. Reintenta más tarde.', 'error');
+  const config = (window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[country]) ? window.COUNTRY_CONFIG[country] : window.COUNTRY_CONFIG['DEFAULT'];
+  if (!config || !config.partners || config.partners.length === 0) return;
+
+  container.innerHTML = config.partners.map(partner => `
+    <div class="card card-glow-green" style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;">
+      <div>
+        <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">${partner.name}</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Opera con licencia y garantía regulada. Regístrate mediante nuestro enlace especial de recomendación y reclama: <strong>${partner.label.split('|')[0]}</strong>.
+        </p>
+      </div>
+      <a href="${partner.url}" target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary btn-block partner-affiliate-link" data-partner-name="${partner.name}">
+        Registrarme en ${partner.name}
+      </a>
+    </div>
+  `).join('');
+};
+
+window.renderMethodPartners = function(country) {
+  const container = document.getElementById('method-partners-container');
+  if (!container) return;
+
+  const config = (window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[country]) ? window.COUNTRY_CONFIG[country] : window.COUNTRY_CONFIG['DEFAULT'];
+  if (!config || !config.partners || config.partners.length === 0) return;
+
+  container.innerHTML = config.partners.map(partner => `
+    <div class="card card-glow-green" style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;">
+      <div>
+        <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">${partner.name}</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Recomendado para aplicar el método de ventaja matemática. Abre tu cuenta hoy y activa tu bono exclusivo: <strong>${partner.label.split('|')[0]}</strong>.
+        </p>
+      </div>
+      <a href="${partner.url}" target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary btn-block partner-affiliate-link" data-partner-name="${partner.name}">
+        Obtener Cuenta en ${partner.name}
+      </a>
+    </div>
+  `).join('');
+};
+
+// Tracking automático de clics a enlaces patrocinados / afiliados en GA4
+document.addEventListener('click', (e) => {
+  const sponsoredLink = e.target.closest('a[rel*="sponsored"]') || e.target.closest('.partner-affiliate-link');
+  if (sponsoredLink) {
+    const partnerName = sponsoredLink.getAttribute('data-partner-name') || sponsoredLink.innerText || 'Unknown';
+    const partnerUrl = sponsoredLink.getAttribute('href');
+    
+    // Enviar evento de conversión a GA4
+    if (typeof gtag === 'function') {
+      gtag('event', 'click_afiliado', {
+        'event_category': 'Afiliados',
+        'event_label': partnerName.trim(),
+        'partner_url': partnerUrl
+      });
+    }
+    console.log(`[Analytics] Tracked Affiliate Click: ${partnerName.trim()} -> ${partnerUrl}`);
   }
-};
-
-window.openCheckoutCO = function() {
-  const config = window.VB_COMMERCIAL_CONFIG;
-  if (config && config.checkoutUrlCO && !config.checkoutUrlCO.includes('YOUR_MERCADO_PAGO_PREFERENCE_ID')) {
-    window.open(config.checkoutUrlCO, '_blank');
-  } else {
-    window.showToast('Checkout de Mercado Pago fuera de servicio. Utiliza el checkout global.', 'error');
-  }
-};
-
-window.goToPartnersPage = function() {
-  window.location.href = 'partners.html';
-};
+});
 
 /* ==========================================================================
    BLOG HUB DYNAMIC COUNTRY & SEARCH FILTERS
