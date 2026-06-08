@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Valor Esperado (+EV) | Apuestas Inteligentes</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Calcula el Valor Esperado (+EV) de tus apuestas deportivas. Descubre si la cuota paga lo justo por el riesgo o si le estás regalando plata a la casa.">
+  <meta name="keywords" content="valor esperado apuestas, apuestas de valor, apuestas mas ev, cuota de valor, ganar apuestas a largo plazo, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/valor-esperado-apuestas.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/valor-esperado-apuestas.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/valor-esperado-apuestas.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/valor-esperado-apuestas.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/valor-esperado-apuestas.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/valor-esperado-apuestas.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/valor-esperado-apuestas.html">
+  <meta property="og:title" content="Calculadora de Valor Esperado (+EV) | Apuestas Inteligentes">
+  <meta property="og:description" content="Calcula el Valor Esperado (+EV) de tus apuestas deportivas. Descubre si la cuota paga lo justo por el riesgo o si le estás regalando plata a la casa.">
+  <meta property="og:image" content="https://ventajabets.com/assets/stadium_scoreboard.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/valor-esperado-apuestas.html">
+  <meta property="twitter:title" content="Calculadora de Valor Esperado (+EV) | Apuestas Inteligentes">
+  <meta property="twitter:description" content="Calcula el Valor Esperado (+EV) de tus apuestas deportivas. Descubre si la cuota paga lo justo por el riesgo o si le estás regalando plata a la casa.">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/stadium_scoreboard.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ventajabets.com/#organization",
+        "name": "VentajaBets",
+        "url": "https://ventajabets.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ventajabets.com/assets/app_dashboard_preview.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ventajabets.com/#website",
+        "url": "https://ventajabets.com/",
+        "name": "VentajaBets",
+        "publisher": {
+          "@id": "https://ventajabets.com/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ventajabets.com/valor-esperado-apuestas.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ventajabets.com/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Trucos",
+            "item": "https://ventajabets.com/aprender.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Valor Esperado",
+            "item": "https://ventajabets.com/valor-esperado-apuestas.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ventajabets.com/valor-esperado-apuestas.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es el Valor Esperado (+EV) en apuestas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El Valor Esperado (+EV) mide la ganancia o pérdida matemática que un apostador puede esperar obtener a largo plazo con una cuota determinada. Si el EV es positivo (+EV), significa que la cuota paga por encima de la probabilidad real del evento, dándote ventaja sobre la casa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se calcula la expectativa de retorno?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La fórmula es: EV% = (Cuota * Probabilidad Real - 1) * 100. Si el resultado es superior a cero, la apuesta tiene expectativa de retorno positiva y a la larga ganarás dinero."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué la mayoría de personas pierden plata a pesar de acertar apuestas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque apuestan a cuotas sin valor. Si juegas una cuota de 1.20 pensando que es 'segura', pero la probabilidad real de que ocurra es del 70%, matemáticamente estás jugando una apuesta con valor esperado negativo (-EV). A la larga, el azar y el margen de la casa te dejarán limpio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué significa que una cuota esté desalineada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Significa que la casa de apuestas fijó una cuota excesivamente alta para la probabilidad real de que ocurra un evento. Ocurre por errores de cálculo del operador, noticias de última hora (lesiones de último minuto) o porque los apostadores cargan demasiado dinero en la opción contraria."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-age-strip {
+      background-color: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="herramientas.html" class="nav-link">Herramientas</a>
+        <a href="simuladores.html" class="nav-link">Simuladores</a>
+        <a href="aprender.html" class="nav-link">Trucos</a>
+        <a href="recursos.html" class="nav-link">Recursos</a>
+        <a href="comunidad.html" class="nav-link">Comunidad</a>
+      </nav>
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+              <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGAL AGE STRIP (Hardcoded) -->
+  <div class="legal-age-strip">
+    <div class="container">
+      <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 2rem;">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+      <a href="index.html" style="color: var(--primary); text-decoration: underline;">Inicio</a> &gt; 
+      <a href="aprender.html" style="color: var(--primary); text-decoration: underline;">Trucos</a> &gt; 
+      <span>Valor Esperado</span>
+    </nav>
+
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="tag">Análisis Estadístico</span>
+      <h1>Calculadora de Valor Esperado (+EV): Juega con Ventaja Matemática</h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;">
+        ¿Apuestas solo porque crees que un equipo es superior? Deja de regalar tu plata. Aprende a calcular el Valor Esperado (+EV) de tus jugadas y averigua de inmediato si una cuota te paga lo justo o si la casa te tiene cogido.
+      </p>
+    </div>
+
+    <!-- CALCULATOR WIDGET -->
+    <div class="calc-wrapper" style="margin-bottom: 4rem;">
+      <div class="calc-panel" id="panel-ev-inputs">
+        <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Calculadora +EV</h3>
+        
+        <div class="form-group">
+          <label for="ev-odds">Cuota ofrecida por la casa (Decimal)</label>
+          <input type="number" step="0.01" min="1.02" class="form-control" id="ev-odds" value="2.25" placeholder="Ej: 2.25">
+        </div>
+
+        <div class="form-group">
+          <label for="ev-stake">Dinero que piensas apostar <span data-bind="country-currency-label">(COP)</span></label>
+          <input type="number" class="form-control" id="ev-stake" value="100000" placeholder="Ej: 100000">
+        </div>
+
+        <div class="form-group slider-container">
+          <div class="slider-header">
+            <label for="ev-confidence">¿Qué probabilidad real le das tú al evento?</label>
+            <span class="slider-val" id="ev-confidence-val">50%</span>
+          </div>
+          <input type="range" min="1" max="99" value="50" class="slider" id="ev-confidence" oninput="document.getElementById('ev-confidence-val').textContent = this.value + '%'">
+        </div>
+
+        <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateConvenience()" id="btn-calc-ev">Calcular Conveniencia</button>
+      </div>
+
+      <div class="calc-results" id="ev-results">
+        <div class="results-placeholder">
+          <p>Mueve el slider para ajustar tu probabilidad estimada de acierto. La calculadora comparará tu estimación con la cuota de la casa y te dará un veredicto matemático inapelable sobre si conviene meter el dinero.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICH TEXT SECTION (700-1000 WORDS) -->
+    <section class="rich-text-section" style="max-width: 900px; margin: 0 auto 4rem auto; line-height: 1.7;">
+      <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">¿Qué es el Valor Esperado (+EV) y por qué es la clave del apostador inteligente?</h2>
+      <p style="margin-bottom: 1.25rem;">
+        Si le preguntas a cualquier apostador amateur en la calle qué busca en un partido, te dirá: *"Busco al ganador"* o *"Sé que el Real Madrid va a golear hoy"*. Esos apostadores juegan basándose en corazonadas, favoritismos o emociones. Y es exactamente el tipo de cliente que las casas de apuestas aman. ¿Por qué? Porque ignoran el concepto más importante de las matemáticas aplicadas al azar: el <strong>Valor Esperado</strong> (Expected Value o EV).
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        El Valor Esperado es una métrica que te indica cuánta plata ganarás o perderás en promedio si repites la misma apuesta cientos de veces bajo las mismas condiciones. En las apuestas deportivas, no se trata de acertar el 100% de las veces; se trata de asegurarte de que cuando arriesgas tu capital, la cuota ofrecida sea mayor que el riesgo real de la jugada. Eso es apostar con ventaja o jugar apuestas <strong>+EV</strong>.
+      </p>
+      
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">La matemática detrás de la fórmula EV</h3>
+      <p style="margin-bottom: 1.25rem;">
+        Calcular el valor esperado es extremadamente sencillo si tienes los datos correctos:
+        `EV = (Probabilidad de Ganar * Ganancia Neta) - (Probabilidad de Perder * Stake)`
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Llevémoslo a porcentajes para que lo veas más fácil con un ejemplo real:
+        Imagina una cuota de 2.50. La casa estima una probabilidad implícita del 40% (`1 / 2.50`).
+        Si tu análisis estadístico te dice que la probabilidad real de que ocurra ese resultado es del 50%, la fórmula del Valor Esperado nos dice:
+        `EV% = (2.50 * 0.50 - 1) * 100 = +25.0%`.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Un EV del +25% es una locura de ventaja. Significa que, a la larga, por cada $100.000 COP que juegues en cuotas similares, vas a tener un retorno promedio de $25.000 COP de ganancia. Por el contrario, si apuestas en cuotas de 1.80 creyendo que es "dinero fácil", pero tu probabilidad real es del 50%, tu EV será:
+        `EV% = (1.80 * 0.50 - 1) * 100 = -10.0%`.
+        Estás regalando el 10% de tu dinero por jugada. Eventualmente, te vas a quedar limpio.
+      </p>
+
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">¿Cómo encontrar apuestas de Valor (+EV) en el mercado real?</h3>
+      <p style="margin-bottom: 1.25rem;">
+        Encontrar valor requiere disciplina y frialdad matemática. Estas son las claves que usan los apostadores de ventaja:
+      </p>
+      <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li>
+          <strong>Calcula tus propias probabilidades:</strong> Antes de mirar las cuotas de las casas de apuestas (para no sesgarte), analiza el partido y asígnale un porcentaje de probabilidad al resultado.
+        </li>
+        <li>
+          <strong>Compara y detecta discrepancias:</strong> Convierte tu porcentaje en una "cuota justa" (`1 / probabilidad`) y compárala con las cuotas reales del mercado. Si tu cuota justa es 2.00 (50% de probabilidad) y una casa paga una cuota de 2.20, has encontrado una apuesta de valor.
+        </li>
+        <li>
+          <strong>Especialízate en mercados secundarios:</strong> En ligas masivas como la Premier League o Champions League, las casas tienen algoritmos perfectos y es casi imposible encontrar cuotas desalineadas. En cambio, en ligas locales (como la Liga de Expansión en México o la Primera B en Colombia) o mercados secundarios (como tiros de esquina, tarjetas amarillas o faltas), las casas cometen errores constantes que puedes explotar.
+        </li>
+      </ul>
+      <p style="margin-bottom: 1.25rem;">
+        Deja de apostar por impulso o por el amor a la camiseta. Usa nuestra calculadora de valor esperado gratis y asegúrate de meter tu dinero únicamente en jugadas donde la ventaja matemática esté de tu lado.
+      </p>
+    </section>
+
+    <!-- VISIBLE FAQ SECTION -->
+    <section class="faq-section" style="max-width: 900px; margin: 0 auto 4rem auto; border-top: 1px solid var(--border-color); padding-top: 3rem;">
+      <h2 style="font-size: 1.6rem; margin-bottom: 2rem; text-align: center;">Preguntas Frecuentes sobre el Valor Esperado</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué es el Valor Esperado (+EV) en apuestas?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">El Valor Esperado (+EV) mide la ganancia o pérdida matemática que un apostador puede esperar obtener a largo plazo con una cuota determinada. Si el EV es positivo (+EV), significa que la cuota paga por encima de la probabilidad real del evento, dándote ventaja sobre la casa.</p>
+        </div>
+        
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Cómo se calcula la expectativa de retorno?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">La fórmula es: EV% = (Cuota * Probabilidad Real - 1) * 100. Si el resultado es superior a cero, la apuesta tiene expectativa de retorno positiva y a la larga ganarás dinero.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Por qué la mayoría de personas pierden plata a pesar de acertar apuestas?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Porque apuestan a cuotas sin valor. Si juegas una cuota de 1.20 pensando que es 'segura', pero la probabilidad real de que ocurra es del 70%, matemáticamente estás jugando una apuesta con valor esperado negativo (-EV). A la larga, el azar y el margen de la casa te dejarán limpio.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué significa que una cuota esté desalineada?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Significa que la casa de apuestas fijó una cuota excesivamente alta para la probabilidad real de que ocurra un evento. Ocurre por errores de cálculo del operador, noticias de última hora (lesiones de último minuto) o porque los apostadores cargan demasiado dinero en la opción contraria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Únete a los apostadores que juegan con ventaja</h3>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+        Accede al método VentajaBets y recibe alertas diarias de cuotas +EV detectadas en tiempo real.
+      </p>
+      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;" data-bind="country-cta-btn" data-base-text="Acceder de por vida">Acceder de por vida ($69.900 COP)</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

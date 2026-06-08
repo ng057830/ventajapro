@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Probabilidad Implícita de Cuotas de Apuestas</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Convierte cualquier cuota de apuestas a su probabilidad implícita en segundos. Entiende qué porcentaje de acierto exige la casa para salir a mano.">
+  <meta name="keywords" content="probabilidad implicita cuotas, conversor de cuotas, calcular probabilidad apuestas, equivalencia cuotas, salir a mano apuestas, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/probabilidad-implicita-cuotas.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/probabilidad-implicita-cuotas.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/probabilidad-implicita-cuotas.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/probabilidad-implicita-cuotas.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/probabilidad-implicita-cuotas.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/probabilidad-implicita-cuotas.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/probabilidad-implicita-cuotas.html">
+  <meta property="og:title" content="Calculadora de Probabilidad Implícita de Cuotas de Apuestas">
+  <meta property="og:description" content="Convierte cualquier cuota de apuestas a su probabilidad implícita en segundos. Entiende qué porcentaje de acierto exige la casa para salir a mano.">
+  <meta property="og:image" content="https://ventajabets.com/assets/sports_math_tactics.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/probabilidad-implicita-cuotas.html">
+  <meta property="twitter:title" content="Calculadora de Probabilidad Implícita de Cuotas de Apuestas">
+  <meta property="twitter:description" content="Convierte cualquier cuota de apuestas a su probabilidad implícita en segundos. Entiende qué porcentaje de acierto exige la casa para salir a mano.">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/sports_math_tactics.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ventajabets.com/#organization",
+        "name": "VentajaBets",
+        "url": "https://ventajabets.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ventajabets.com/assets/app_dashboard_preview.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ventajabets.com/#website",
+        "url": "https://ventajabets.com/",
+        "name": "VentajaBets",
+        "publisher": {
+          "@id": "https://ventajabets.com/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ventajabets.com/probabilidad-implicita-cuotas.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ventajabets.com/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Trucos",
+            "item": "https://ventajabets.com/aprender.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Probabilidad Implícita",
+            "item": "https://ventajabets.com/probabilidad-implicita-cuotas.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ventajabets.com/probabilidad-implicita-cuotas.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es la probabilidad implícita en las cuotas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es el porcentaje de probabilidad estimado por la casa de apuestas para que un resultado ocurra, representado en forma de cuota. Por ejemplo, una cuota de 2.00 tiene una probabilidad implícita del 50%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se calcula la probabilidad implícita a partir de una cuota decimal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La fórmula es sumamente simple: divide 1 entre la cuota decimal y multiplica por 100 (Probabilidad % = 1 / Cuota * 100). Así desarmas el número de la casa en porcentaje."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué es una cuota justa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es la cuota que representa matemáticamente la probabilidad real sin comisiones de la casa. Si un evento tiene un 50% de probabilidad real, su cuota justa es exactamente 2.00. Si la casa ofrece más de 2.00, tienes ventaja."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué las probabilidades de todas las cuotas de un partido suman más de 100%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque las casas de apuestas inflan las probabilidades implícitas agregando su comisión (el overround o margen). Esa tajada extra garantiza que el operador gane plata sin importar el resultado."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-age-strip {
+      background-color: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="herramientas.html" class="nav-link">Herramientas</a>
+        <a href="simuladores.html" class="nav-link">Simuladores</a>
+        <a href="aprender.html" class="nav-link">Trucos</a>
+        <a href="recursos.html" class="nav-link">Recursos</a>
+        <a href="comunidad.html" class="nav-link">Comunidad</a>
+      </nav>
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+              <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGAL AGE STRIP (Hardcoded) -->
+  <div class="legal-age-strip">
+    <div class="container">
+      <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 2rem;">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+      <a href="index.html" style="color: var(--primary); text-decoration: underline;">Inicio</a> &gt; 
+      <a href="aprender.html" style="color: var(--primary); text-decoration: underline;">Trucos</a> &gt; 
+      <span>Probabilidad Implícita</span>
+    </nav>
+
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="tag">Matemáticas Básicas</span>
+      <h1>Probabilidad Implícita de Cuotas: Desarmando los Números de la Casa</h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;">
+        Las casas te presentan cuotas para confundir tu mente intuitiva. Usa nuestra calculadora dual para convertir cualquier cuota decimal a su probabilidad implícita real y viceversa. Entiende qué porcentaje de acierto necesitas para salir a mano.
+      </p>
+    </div>
+
+    <!-- CALCULATOR WIDGET 1: IMPLIED PROBABILITY -->
+    <div class="calc-wrapper" style="margin-bottom: 3rem;">
+      <div class="calc-panel" id="panel-implied-inputs">
+        <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">1. Convertir Cuota a Porcentaje (%)</h3>
+        <div class="form-group">
+          <label for="implied-odds">Cuota Decimal (Ej: 1.85)</label>
+          <input type="number" step="0.01" min="1.02" class="form-control" id="implied-odds" value="1.85" placeholder="Ej: 1.85">
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateImplicitProbability()" id="btn-calc-implied">Calcular Probabilidad Implícita</button>
+      </div>
+
+      <div class="calc-results" id="implied-results">
+        <div class="results-placeholder">
+          <p>Ingresa una cuota decimal para ver su probabilidad implícita equivalente y saber el retorno bruto estimado por cada $100.000 COP jugados.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALCULATOR WIDGET 2: CONVERSOR DUAL -->
+    <div class="card" style="padding: 2rem; margin-bottom: 4rem;">
+      <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--secondary);">2. Conversor Interactivo en Tiempo Real</h3>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="conv-decimal">Ingresa Cuota Decimal (Ej: 2.50)</label>
+          <input type="number" step="0.01" class="form-control" id="conv-decimal" value="2.50" oninput="convertOddsProb()">
+          <div id="conv-decimal-result" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--primary); font-weight: 600;">Equivale a una probabilidad de: 40.0%</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="conv-prob">Ingresa Probabilidad % (Ej: 50)</label>
+          <input type="number" step="0.1" class="form-control" id="conv-prob" value="50" oninput="convertOddsProb()">
+          <div id="conv-prob-result" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--primary); font-weight: 600;">Cuota justa equivalente: 2.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICH TEXT SECTION (700-1000 WORDS) -->
+    <section class="rich-text-section" style="max-width: 900px; margin: 0 auto 4rem auto; line-height: 1.7;">
+      <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">¿Qué es la probabilidad implícita de las cuotas y por qué la ignoras?</h2>
+      <p style="margin-bottom: 1.25rem;">
+        Cuando abres una aplicación de apuestas, ves números decimales por todos lados: 1.45, 2.10, 5.00. Para el cerebro humano, estos números son abstractos. La mayoría de los apostadores los asocian únicamente con el retorno de dinero: *"Si meto $10.000 a cuota 5.00, me llevo $50.000"*. Pero ignoran que las cuotas no son solo multiplicadores; son <strong>estimaciones de probabilidad enmascaradas</strong>.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        La <strong>probabilidad implícita</strong> es el porcentaje de posibilidad que la casa de apuestas le asigna a un resultado, traducido a su formato de cuotas para poder comercializarlo. Si no traduces ese decimal a porcentaje, es imposible que sepas si estás metiendo tu plata en un trato justo o si te están estafando con cuotas miserables.
+      </p>
+      
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">Cómo calcular la probabilidad implícita</h3>
+      <p style="margin-bottom: 1.25rem;">
+        En el formato de cuota decimal (el más común en Latinoamérica), el cálculo matemático es increíblemente sencillo:
+        `Probabilidad Implícita (%) = (1 / Cuota) * 100`
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Veamos ejemplos prácticos:
+        - Una cuota de 1.50 implica: `(1 / 1.50) * 100 = 66.6%`. La casa estima que esto ocurrirá 2 de cada 3 veces.
+        - Una cuota de 2.00 implica: `(1 / 2.00) * 100 = 50.0%`. Probabilidad de lanzar una moneda al aire.
+        - Una cuota de 4.00 implica: `(1 / 4.00) * 100 = 25.0%`. Un escenario de 1 contra 4.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        <strong>¿Por qué importa esto?</strong> Porque te da un punto de comparación. Si la casa ofrece una cuota de 1.50 (probabilidad implícita de 66.6%), significa que tú debes tener la seguridad de que el resultado ocurrirá <strong>más del 66.6% de las veces</strong> para que la apuesta sea rentable. Si tras tu análisis consideras que la probabilidad real es solo del 60%, meter dinero ahí es regalar plata. Tienes una expectativa negativa.
+      </p>
+
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">El concepto de salir a mano (Break-Even)</h3>
+      <p style="margin-bottom: 1.25rem;">
+        Entender la probabilidad implícita te permite calcular tu punto de equilibrio o "break-even". Si juegas siempre a cuotas promedio de 1.80, tu probabilidad implícita es del `55.5%`. Esto significa que para no perder plata y salir a mano en el largo plazo, necesitas acertar al menos <strong>56 de cada 100 apuestas</strong> que realices.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Si juegas a cuotas promedio de 3.00, tu probabilidad implícita es del `33.3%`. Solo necesitas acertar <strong>34 de cada 100 apuestas</strong> para estar en saldo verde. Muchos apostadores aficionados se frustran porque pierden el 60% de sus apuestas a cuotas de 3.50, sin darse cuenta de que con un 40% de aciertos ya están ganando mucho dinero de manera constante.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Usa nuestro conversor gratis para traducir cuotas a porcentajes reales en segundos. Deja de ver las cuotas como meros multiplicadores y empieza a verlas como lo que son: la balanza matemática del mercado.
+      </p>
+    </section>
+
+    <!-- VISIBLE FAQ SECTION -->
+    <section class="faq-section" style="max-width: 900px; margin: 0 auto 4rem auto; border-top: 1px solid var(--border-color); padding-top: 3rem;">
+      <h2 style="font-size: 1.6rem; margin-bottom: 2rem; text-align: center;">Preguntas Frecuentes sobre Probabilidad Implícita</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué es la probabilidad implícita en las cuotas?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Es el porcentaje de probabilidad estimado por la casa de apuestas para que un resultado ocurra, representado en forma de cuota. Por ejemplo, una cuota de 2.00 tiene una probabilidad implícita del 50%.</p>
+        </div>
+        
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Cómo se calcula la probabilidad implícita a partir de una cuota decimal?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">La fórmula es sumamente simple: divide 1 entre la cuota decimal y multiplica por 100 (Probabilidad % = 1 / Cuota * 100). Así desarmas el número de la casa en porcentaje.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué es una cuota justa?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Es la cuota que representa matemáticamente la probabilidad real sin comisiones de la casa. Si un evento tiene un 50% de probabilidad real, su cuota justa es exactamente 2.00. Si la casa ofrece más de 2.00, tienes ventaja.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Por qué las probabilidades de todas las cuotas de un partido suman más de 100%?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Porque las casas de apuestas inflan las probabilidades implícitas agregando su comisión (el overround o margen). Esa tajada extra garantiza que el operador gane plata sin importar el resultado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Aprende el método de valor profesional</h3>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+        ¿Quieres dominar las matemáticas de las apuestas y dejar de regalar saldo? Entra al sistema completo de VentajaBets.
+      </p>
+      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;" data-bind="country-cta-btn" data-base-text="Adquirir Acceso de por Vida">Adquirir Acceso de por Vida ($69.900 COP)</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

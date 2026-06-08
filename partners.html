@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casas y Partners Disponibles | VentajaBets</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Encuentra las casas de apuestas recomendadas y autorizadas con bonos exclusivos para tu país. Registrate con nuestros partners de confianza y juega seguro.">
+  <meta name="keywords" content="casas de apuestas, bonos de apuestas, codere colombia, caliente mx, bet365 españa, betano peru, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/partners.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/partners.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/partners.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/partners.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/partners.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/partners.html">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-age-strip {
+      background-color: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="herramientas.html" class="nav-link">Herramientas</a>
+        <a href="simuladores.html" class="nav-link">Simuladores</a>
+        <a href="aprender.html" class="nav-link">Trucos</a>
+        <a href="recursos.html" class="nav-link">Recursos</a>
+        <a href="comunidad.html" class="nav-link">Comunidad</a>
+      </nav>
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+        <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGAL AGE STRIP (Hardcoded) -->
+  <div class="legal-age-strip">
+    <div class="container">
+      <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 2rem;">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+      <a href="index.html" style="color: var(--primary); text-decoration: underline;">Inicio</a> &gt; 
+      <span>Partners Disponibles</span>
+    </nav>
+
+    <div class="section-header" style="margin-bottom: 3rem;">
+      <span class="tag">Juego Autorizado</span>
+      <h2>Casas de Apuestas y Partners Activos</h2>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 700px;">
+        Te mostramos únicamente los operadores recomendados con licencias legales vigentes y promociones exclusivas habilitadas para <strong data-bind="country-name" style="color: var(--primary);">tu país</strong>.
+      </p>
+    </div>
+
+    <!-- Country Information Panel -->
+    <div class="card" style="margin-bottom: 2.5rem; background-color: var(--bg-card); border-color: var(--border-color); padding: 1.5rem;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">País detectado: <span data-bind="country-flag"></span> <span data-bind="country-name" style="color: var(--primary);">...</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0;">
+            Regulación aplicable: <strong data-bind="country-legal" style="color: var(--text-primary);">...</strong>
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('btn-country-select').click();" style="font-size: 0.85rem;">
+            🌐 Cambiar País Manualmente
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partners Grid Container -->
+    <div id="partners-list-container" class="grid-3" style="margin-bottom: 4rem; min-height: 200px;">
+      <!-- JavaScript Renders Cards Here -->
+      <div class="results-placeholder" style="grid-column: 1 / -1; padding: 3rem 0;">
+        <p>Cargando información de partners locales...</p>
+      </div>
+    </div>
+
+    <!-- CALL TO ACTION -->
+    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">¿Quieres optimizar tu bankroll con la matemática de tu lado?</h3>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+        Únete a la suite completa VentajaBets Pro y obtén alertas instantáneas, simuladores premium y calculadoras avanzadas.
+      </p>
+      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;">Ver Sistema Pro</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Criterio de Kelly | Gestiona tu Caja de Apuestas</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Usa el Criterio de Kelly para calcular el porcentaje exacto de tu bankroll que debes apostar en cada jugada con ventaja (+EV). ¡Pruébala ya!">
+  <meta name="keywords" content="criterio kelly apuestas, formula de kelly apuestas, gestion de bankroll, stake apuestas, apuestas de valor, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/criterio-kelly-apuestas.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/criterio-kelly-apuestas.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/criterio-kelly-apuestas.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/criterio-kelly-apuestas.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/criterio-kelly-apuestas.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/criterio-kelly-apuestas.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/criterio-kelly-apuestas.html">
+  <meta property="og:title" content="Calculadora Criterio de Kelly | Gestiona tu Caja de Apuestas">
+  <meta property="og:description" content="Usa el Criterio de Kelly para calcular el porcentaje exacto de tu bankroll que debes apostar en cada jugada con ventaja (+EV). ¡Pruébala ya!">
+  <meta property="og:image" content="https://ventajabets.com/assets/laptop_charts_preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/criterio-kelly-apuestas.html">
+  <meta property="twitter:title" content="Calculadora Criterio de Kelly | Gestiona tu Caja de Apuestas">
+  <meta property="twitter:description" content="Usa el Criterio de Kelly para calcular el porcentaje exacto de tu bankroll que debes apostar en cada jugada con ventaja (+EV). ¡Pruébala ya!">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/laptop_charts_preview.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ventajabets.com/#organization",
+        "name": "VentajaBets",
+        "url": "https://ventajabets.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ventajabets.com/assets/app_dashboard_preview.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ventajabets.com/#website",
+        "url": "https://ventajabets.com/",
+        "name": "VentajaBets",
+        "publisher": {
+          "@id": "https://ventajabets.com/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ventajabets.com/criterio-kelly-apuestas.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ventajabets.com/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Trucos",
+            "item": "https://ventajabets.com/aprender.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Criterio de Kelly",
+            "item": "https://ventajabets.com/criterio-kelly-apuestas.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ventajabets.com/criterio-kelly-apuestas.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es la fórmula del Criterio de Kelly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es una fórmula matemática utilizada para calcular el tamaño óptimo de una apuesta. Depende de la cuota ofrecida por la casa y de tu probabilidad estimada de acierto. Te ayuda a maximizar el crecimiento del bankroll a largo plazo mientras minimiza el riesgo de ruina."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué es peligroso usar el Kelly Completo (Full Kelly)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque la fórmula asume que tu probabilidad estimada es 100% correcta. Si te sobreestimas aunque sea por un poco, el Kelly Completo te pedirá apuestas muy grandes (ej: 15% de tu saldo), lo que provoca una volatilidad brutal y te puede dejar limpio en una racha de mala suerte. Por eso los profesionales usan fracciones como Medio Kelly o Cuarto Kelly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si la fórmula de Kelly da un resultado negativo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Significa que la jugada no tiene ventaja matemática (es decir, el valor esperado es negativo). La casa te está pagando menos de lo que deberías recibir por el riesgo del partido. En ese caso, la recomendación de Kelly es apostar exactamente cero pesos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo estimo mi propia probabilidad para usar la calculadora Kelly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Debes analizar estadísticas objetivas, historial de enfrentamientos, lesiones y condiciones climáticas. No uses tus corazonadas o fanatismo. Si la cuota de la casa implica un 50% y tu análisis serio da un 55%, tienes una ventaja del 5% que puedes explotar con Kelly."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-age-strip {
+      background-color: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="herramientas.html" class="nav-link">Herramientas</a>
+        <a href="simuladores.html" class="nav-link">Simuladores</a>
+        <a href="aprender.html" class="nav-link">Trucos</a>
+        <a href="recursos.html" class="nav-link">Recursos</a>
+        <a href="comunidad.html" class="nav-link">Comunidad</a>
+      </nav>
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+              <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGAL AGE STRIP (Hardcoded) -->
+  <div class="legal-age-strip">
+    <div class="container">
+      <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 2rem;">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+      <a href="index.html" style="color: var(--primary); text-decoration: underline;">Inicio</a> &gt; 
+      <a href="aprender.html" style="color: var(--primary); text-decoration: underline;">Trucos</a> &gt; 
+      <span>Criterio de Kelly</span>
+    </nav>
+
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="tag">Gestión de Bankroll</span>
+      <h1>Calculadora Criterio de Kelly: Optimiza el Stake de tus Apuestas</h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;">
+        ¿Apostando siempre el mismo monto o metiendo dinero a ojo? Así es como te vas a quedar limpio. Usa la calculadora basada en el Criterio de Kelly para saber el porcentaje exacto de tu caja que debes arriesgar en cada jugada con ventaja.
+      </p>
+    </div>
+
+    <!-- CALCULATOR WIDGET -->
+    <div class="calc-wrapper" style="margin-bottom: 4rem;">
+      <div class="calc-panel" id="panel-sz-inputs">
+        <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Calculadora Kelly Pro</h3>
+        
+        <!-- Hidden but checked to force Pro Mode in calculateStakeSize -->
+        <input type="checkbox" id="sz-pro-mode" checked style="display: none;">
+
+        <div class="form-group">
+          <label for="sz-capital">Tu saldo total disponible hoy (Bankroll)</label>
+          <input type="number" class="form-control" id="sz-capital" value="200000" placeholder="Ej: 200000">
+        </div>
+
+        <div class="form-group">
+          <label for="sz-odds">Cuota de la apuesta (Decimal, Ej: 1.90)</label>
+          <input type="number" step="0.01" min="1.02" class="form-control" id="sz-odds" value="1.90" placeholder="Ej: 1.90">
+        </div>
+
+        <div class="form-group">
+          <label for="sz-confidence">Probabilidad real estimada por ti (%)</label>
+          <input type="number" class="form-control" id="sz-confidence" value="56" placeholder="Ej: 56">
+        </div>
+
+        <div class="form-group">
+          <label for="sz-kelly-type">Fraccional de Kelly (Ajuste de riesgo)</label>
+          <select class="form-control" id="sz-kelly-type">
+            <option value="completo">Kelly Completo (Agresivo - Varianza alta)</option>
+            <option value="medio" selected>Medio Kelly (Recomendado - Equilibrio)</option>
+            <option value="cuarto">Cuarto Kelly (Conservador - Cuidado de caja)</option>
+            <option value="conservador">Kelly Micro (Máximo 2% de caja)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateStakeSize()" id="btn-calc-sz">Calcular Stake Kelly</button>
+      </div>
+
+      <div class="calc-results" id="sz-results">
+        <div class="results-placeholder">
+          <p>Ingresa tu bankroll, la cuota y tu probabilidad calculada. La herramienta aplicará la fórmula de Kelly para optimizar el tamaño de tu apuesta y protegerte de las rachas de mala suerte.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICH TEXT SECTION (700-1000 WORDS) -->
+    <section class="rich-text-section" style="max-width: 900px; margin: 0 auto 4rem auto; line-height: 1.7;">
+      <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">La matemática del crecimiento óptimo: ¿Qué es el Criterio de Kelly?</h2>
+      <p style="margin-bottom: 1.25rem;">
+        Muchos apostadores creen que el secreto para ganarle a las casas es adivinar quién ganará el partido. Pasan horas analizando alineaciones o rachas. Sin embargo, puedes ser un genio de los pronósticos y aun así terminar en la ruina si no sabes gestionar tu plata. El <strong>Criterio de Kelly</strong> es la fórmula que separa a los aficionados de los profesionales que viven de los mercados deportivos.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Desarrollada por John L. Kelly Jr. en 1956 en los laboratorios Bell, esta fórmula fue pensada originalmente para resolver problemas de ruido en líneas telefónicas, pero pronto se vio su tremendo poder en las finanzas y las apuestas de valor (+EV). Su objetivo es simple: calcular qué porcentaje de tu dinero disponible debes apostar en una jugada con ventaja para lograr la mayor tasa de crecimiento exponencial en el largo plazo.
+      </p>
+      
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">La fórmula matemática de Kelly</h3>
+      <p style="margin-bottom: 1.25rem;">
+        La ecuación estándar de Kelly se define como:
+        `f* = (b * p - q) / b`
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Donde:
+        - `f*` es la fracción de tu bankroll que debes apostar.
+        - `b` es la cuota decimal menos 1 (es decir, la ganancia neta por cada peso apostado).
+        - `p` es tu probabilidad real estimada del evento (de 0 a 1).
+        - `q` es la probabilidad de perder, que equivale a `1 - p`.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Si la cuota es 2.00 (`b = 1`) y estimas que tienes un 55% de probabilidad de ganar (`p = 0.55`, `q = 0.45`), la fórmula dice:
+        `f* = (1 * 0.55 - 0.45) / 1 = 0.10` (es decir, el 10% de tu bankroll).
+        Si tienes ventaja, la fórmula te dará un valor positivo. Si no tienes ventaja (el valor esperado es negativo o nulo), la fórmula dará un valor menor o igual a cero, diciéndote que no arriesgues un solo peso.
+      </p>
+
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">Fraccionales de Kelly: Por qué el 100% de la fórmula te puede quebrar</h3>
+      <p style="margin-bottom: 1.25rem;">
+        En teoría, apostar el Kelly Completo es lo matemáticamente óptimo. Pero en la vida real, tiene un peligro enorme: la <strong>sobreestimación</strong>. Los seres humanos tendemos a creer que sabemos más de lo que en verdad sabemos. Si calculas que un equipo tiene 60% de probabilidad pero en realidad tiene 52%, apostar la fracción completa de Kelly te hará perder dinero de forma acelerada y aumentará exponencialmente el riesgo de quebrar (riesgo de ruina).
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Por esta razón, ningún apostador profesional usa el Kelly Completo. En su lugar, se aplican los <strong>fraccionales de Kelly</strong>:
+      </p>
+      <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li>
+          <strong>Medio Kelly (0.5x):</strong> Reduce la fracción recomendada a la mitad. Conserva cerca del 75% del crecimiento potencial del bankroll pero reduce la volatilidad en un 50%. Es el estándar dorado para la mayoría de profesionales.
+        </li>
+        <li>
+          <strong>Cuarto de Kelly (0.25x):</strong> Reduce la sugerencia al 25%. Es ideal si eres novato estimando probabilidades, ya que te da un colchón gigante contra errores y protege tu caja en rachas largas de mala suerte.
+        </li>
+        <li>
+          <strong>Kelly Micro (2% tope):</strong> Es un enfoque súper conservador donde nunca arriesgas más del 2% del total de tu saldo, sin importar cuán cabrón se vea el valor esperado.
+        </li>
+      </ul>
+      <p style="margin-bottom: 1.25rem;">
+        Usa nuestra calculadora Kelly Pro antes de cada partido. Ingresa los datos con frialdad matemática, ajusta tu fraccional y protege tu plata de las emociones que quiebran a los apostadores aficionados.
+      </p>
+    </section>
+
+    <!-- VISIBLE FAQ SECTION -->
+    <section class="faq-section" style="max-width: 900px; margin: 0 auto 4rem auto; border-top: 1px solid var(--border-color); padding-top: 3rem;">
+      <h2 style="font-size: 1.6rem; margin-bottom: 2rem; text-align: center;">Preguntas Frecuentes sobre el Criterio de Kelly</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué es la fórmula del Criterio de Kelly?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Es una fórmula matemática utilizada para calcular el tamaño óptimo de una apuesta. Depende de la cuota ofrecida por la casa y de tu probabilidad estimada de acierto. Te ayuda a maximizar el crecimiento del bankroll a largo plazo mientras minimiza el riesgo de ruina.</p>
+        </div>
+        
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Por qué es peligroso usar el Kelly Completo (Full Kelly)?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Porque la fórmula asume que tu probabilidad estimada es 100% correcta. Si te sobreestimas aunque sea por un poco, el Kelly Completo te pedirá apuestas muy grandes (ej: 15% de tu saldo), lo que provoca una volatilidad brutal y te puede dejar limpio en una racha de mala suerte. Por eso los profesionales usan fracciones como Medio Kelly o Cuarto Kelly.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué pasa si la fórmula de Kelly da un resultado negativo?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Significa que la jugada no tiene ventaja matemática (es decir, el valor esperado es negativo). La casa te está pagando menos de lo que deberías recibir por el riesgo del partido. En ese caso, la recomendación de Kelly es apostar exactamente cero pesos.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Cómo estimo mi propia probabilidad para usar la calculadora Kelly?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Debes analizar estadísticas objetivas, historial de enfrentamientos, lesiones y condiciones climáticas. No uses tus corazonadas o fanatismo. Si la cuota de la casa implica un 50% y tu análisis serio da un 55%, tienes una ventaja del 5% que puedes explotar con Kelly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Aprende a gestionar tu dinero como un profesional</h3>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+        Accede al método de ventaja VentajaBets y domina el uso avanzado de las matemáticas aplicadas a mercados deportivos.
+      </p>
+      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;" data-bind="country-cta-btn" data-base-text="Ver Curso Completo">Ver Curso Completo ($69.900 COP)</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Arbitraje de Apuestas | Multiplica tu Caja</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Aprende el arte del arbitraje deportivo. Calcula el overround, el reparto exacto de stake y evita errores estúpidos que te dejen limpio. ¡Prueba gratis!">
+  <meta name="keywords" content="calculadora arbitraje apuestas, arbitraje de apuestas, overround apuestas, margen de la casa, reparto stake apuestas, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/calculadora-arbitraje-apuestas.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/calculadora-arbitraje-apuestas.html">
+  <meta property="og:title" content="Calculadora de Arbitraje de Apuestas | Multiplica tu Caja">
+  <meta property="og:description" content="Aprende el arte del arbitraje deportivo. Calcula el overround, el reparto exacto de stake y evita errores estúpidos que te dejen limpio. ¡Prueba gratis!">
+  <meta property="og:image" content="https://ventajabets.com/assets/odds_clipboard.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/calculadora-arbitraje-apuestas.html">
+  <meta property="twitter:title" content="Calculadora de Arbitraje de Apuestas | Multiplica tu Caja">
+  <meta property="twitter:description" content="Aprende el arte del arbitraje deportivo. Calcula el overround, el reparto exacto de stake y evita errores estúpidos que te dejen limpio. ¡Prueba gratis!">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/odds_clipboard.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ventajabets.com/#organization",
+        "name": "VentajaBets",
+        "url": "https://ventajabets.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ventajabets.com/assets/app_dashboard_preview.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ventajabets.com/#website",
+        "url": "https://ventajabets.com/",
+        "name": "VentajaBets",
+        "publisher": {
+          "@id": "https://ventajabets.com/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ventajabets.com/calculadora-arbitraje-apuestas.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ventajabets.com/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Trucos",
+            "item": "https://ventajabets.com/aprender.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Arbitraje de Apuestas",
+            "item": "https://ventajabets.com/calculadora-arbitraje-apuestas.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ventajabets.com/calculadora-arbitraje-apuestas.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuál es la diferencia real entre surebet y arbitraje?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Conceptualmente son casi lo mismo, pero el arbitraje deportivo es el término técnico y profesional. Implica un enfoque estructural: buscar ineficiencias de mercado, calcular el overround de los operadores y explotar la diferencia de márgenes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué es el overround o margen de la casa y cómo influye en el arbitraje?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El overround es la suma de probabilidades implícitas en las cuotas de un operador. Normalmente suma más del 100% (ej: 106%), y ese 6% es la tajada garantizada del operador. En el arbitraje, buscas cruzar cuotas de operadores distintos donde el overround total caiga por debajo del 100%, devolviéndote la ventaja a ti."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué es peligroso apostar centavos en el arbitraje?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque un apostador común nunca mete $43.219 COP o $51.782 COP en un partido de tenis de mesa de la liga rusa. Esos montos tan precisos hacen saltar las alarmas automáticas de las casas de apuestas. Es mejor redondear a los $500 o $1.000 COP más cercanos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si una de las cuotas cambia a mitad de mi jugada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A eso se le llama 'patinar' o quedarse expuesto. Si metes la apuesta A y cuando vas a meter la apuesta B la cuota bajó, tu arbitraje se rompe. Tienes dos opciones: meter la apuesta B asumiendo una pequeña pérdida matemática (comprar tu tranquilidad) o dejarla correr asumiendo el riesgo completo del partido."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-age-strip {
+      background-color: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="herramientas.html" class="nav-link">Herramientas</a>
+        <a href="simuladores.html" class="nav-link">Simuladores</a>
+        <a href="aprender.html" class="nav-link">Trucos</a>
+        <a href="recursos.html" class="nav-link">Recursos</a>
+        <a href="comunidad.html" class="nav-link">Comunidad</a>
+      </nav>
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+              <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGAL AGE STRIP (Hardcoded) -->
+  <div class="legal-age-strip">
+    <div class="container">
+      <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 2rem;">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+      <a href="index.html" style="color: var(--primary); text-decoration: underline;">Inicio</a> &gt; 
+      <a href="aprender.html" style="color: var(--primary); text-decoration: underline;">Trucos</a> &gt; 
+      <span>Arbitraje de Apuestas</span>
+    </nav>
+
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="tag">Estrategia Avanzada</span>
+      <h1>Calculadora de Arbitraje de Apuestas: Explotando Ineficiencias de Mercado</h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;">
+        El arbitraje es el truco más cabrón de las apuestas: consiste en encontrar discrepancias estadísticas entre casas para apostar a todos los resultados y garantizar saldo verde. Aprende a repartir el stake y proteger tu cuenta de limitaciones.
+      </p>
+    </div>
+
+    <!-- CALCULATOR HERO SECTION -->
+    <div class="calc-wrapper" style="margin-bottom: 4rem;">
+      <div class="calc-panel" id="panel-arb-inputs">
+        <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Cálculo de Arbitraje y Reparto</h3>
+        
+        <div class="form-group">
+          <label for="arb-outcomes">Opciones del mercado</label>
+          <select class="form-control" id="arb-outcomes" onchange="document.getElementById('arb-2-inputs').style.display = this.value === '2' ? 'block' : 'none'; document.getElementById('arb-3-inputs').style.display = this.value === '3' ? 'block' : 'none';">
+            <option value="2">2 resultados (Ambos marcan, Más/Menos goles, etc.)</option>
+            <option value="3">3 resultados (Fútbol 1X2 - Local/Empate/Visitante)</option>
+          </select>
+        </div>
+
+        <div id="arb-2-inputs">
+          <div class="form-group">
+            <label for="arb-odds-a">Cuota Operador A (Ej: 2.20)</label>
+            <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-a" value="2.20" placeholder="Ej: 2.20">
+          </div>
+          <div class="form-group">
+            <label for="arb-odds-b">Cuota Operador B (Ej: 1.98)</label>
+            <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-b" value="1.98" placeholder="Ej: 1.98">
+          </div>
+        </div>
+
+        <div id="arb-3-inputs" style="display:none;">
+          <div class="form-group">
+            <label for="arb-odds-l">Cuota Local (Ej: 3.10)</label>
+            <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-l" value="3.10" placeholder="Ej: 3.10">
+          </div>
+          <div class="form-group">
+            <label for="arb-odds-e">Cuota Empate (Ej: 3.30)</label>
+            <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-e" value="3.30" placeholder="Ej: 3.30">
+          </div>
+          <div class="form-group">
+            <label for="arb-odds-v">Cuota Visitante (Ej: 3.60)</label>
+            <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-v" value="3.60" placeholder="Ej: 3.60">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="arb-stake">Presupuesto total a jugar <span data-bind="country-currency-label">(COP)</span></label>
+          <input type="number" class="form-control" id="arb-stake" value="200000" placeholder="Ej: 200000">
+        </div>
+
+        <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateSurebet()" id="btn-calc-arb">Calcular Arbitraje Deportivo</button>
+      </div>
+
+      <div class="calc-results" id="arb-results">
+        <div class="results-placeholder">
+          <p>Ingresa las cuotas del mercado. La calculadora detectará si el margen total es inferior al 100% y te mostrará la distribución exacta para anular el riesgo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICH TEXT SECTION (700-1000 WORDS) -->
+    <section class="rich-text-section" style="max-width: 900px; margin: 0 auto 4rem auto; line-height: 1.7;">
+      <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">La Ciencia del Arbitraje Deportivo y el Overround</h2>
+      <p style="margin-bottom: 1.25rem;">
+        Si alguna vez has analizado cómo operan las casas de apuestas, sabrás que están blindadas matemáticamente. No les importa quién gane el partido. Ellas ganan plata cobrando una pequeña comisión implícita en las cuotas. A esta comisión se le conoce como <strong>overround</strong> o margen de la casa.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Por ejemplo, en un partido equilibrado donde la probabilidad real de ambos lados es del 50%, una cuota justa debería ser 2.00 para cada uno. Pero la casa te ofrecerá cuotas de 1.85 o 1.90. Si sumas los inversos de esas cuotas (`1/1.90 + 1/1.90`), el resultado es `105.2%`. Ese 5.2% extra sobre el 100% es el margen garantizado del operador. Ellos logran que los apostadores metan plata en ambos lados de forma proporcional, y se embolsan la diferencia libre de riesgo.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        El <strong>arbitraje de apuestas</strong> (también conocido como *surebets*) da la vuelta a este escenario. Consiste en cruzar las cuotas de operadores independientes que están tan desalineados que, al sumarlas, el overround conjunto cae por debajo del 100%. Cuando la suma es menor a 1.0 (100%), significa que hay un margen positivo y la ventaja matemática pasa a estar en manos del apostador.
+      </p>
+
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">Reparto de Stake profesional: Evitando patrones de sospecha</h3>
+      <p style="margin-bottom: 1.25rem;">
+        El mayor error que cometen los novatos cuando empiezan en el arbitraje es copiar a ciegas las cifras exactas que entrega la calculadora. Si la calculadora de arbitraje te dice que tienes que meter $87.342 COP en el Operador A y $112.658 COP en el Operador B, y realizas la apuesta por esas cantidades exactas, te estás poniendo una diana en la espalda.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        Las casas de apuestas autorizadas utilizan sistemas inteligentes de detección de tramposos y arbitrajistas. Un usuario normal apuesta números redondos: $20.000 COP, $50.000 COP o $100.000 COP. Si tus apuestas son de centavos o números extremadamente precisos, la casa sabrá en su primera revisión de patrones que estás usando herramientas automatizadas de arbitraje y te limitará de inmediato.
+      </p>
+      <p style="margin-bottom: 1.25rem;">
+        <strong>¿Cómo solucionarlo?</strong> Redondea los montos. Si la calculadora dice $87.342 COP, apuesta $85.000 COP o $90.000 COP. La ganancia no será 100% simétrica (ganarás un poco más con un resultado que con otro), pero seguirás estando en terreno seguro, cubriendo el riesgo y prolongando la vida de tus cuentas.
+      </p>
+
+      <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--text-primary);">Errores comunes que te pueden dejar limpio</h3>
+      <p style="margin-bottom: 1.25rem;">
+        Aunque la teoría del arbitraje dice que "ganas pase lo que pase", en la práctica existen riesgos de operación humana que debes conocer si no quieres perder tu saldo:
+      </p>
+      <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li>
+          <strong>El cambio rápido de cuotas (Slips):</strong> Mientras colocas la apuesta en la primera casa, la segunda puede cambiar su cuota de golpe. Te quedas expuesto y sin cobertura. Para minimizar esto, abre ambas plataformas en pantallas separadas, prepara los cupones de apuesta y dale al botón de enviar casi de forma simultánea.
+        </li>
+        <li>
+          <strong>Reglas inconsistentes entre casas:</strong> Presta atención a los deportes propensos a suspensiones como el tenis o el béisbol. Si hay un abandono por lesión, un operador puede declarar la apuesta nula y devolverte el stake, mientras que el otro operador puede dar por válida la apuesta según quién clasifique. Estúdiate el glosario de términos de cada operador antes de cruzar dinero.
+        </li>
+        <li>
+          <strong>Fondos insuficientes:</strong> Si tienes que meter una apuesta de $300.000 COP de cobertura pero tu cuenta no tiene saldo y la transacción de recarga falla o se demora, te quedarás con una sola jugada descubierta. Asegúrate de tener saldo cargado en 4 o 5 cuentas distintas para no perder oportunidades.
+        </li>
+      </ul>
+      <p style="margin-bottom: 1.25rem;">
+        En conclusión, la calculadora de arbitraje es una herramienta imprescindible para comprobar márgenes y calcular apuestas con ventaja matemática. Úsala con cabeza, respeta las reglas de redondeo y cuida tus cuentas para hacer del arbitraje un truco rentable en el largo plazo.
+      </p>
+    </section>
+
+    <!-- VISIBLE FAQ SECTION -->
+    <section class="faq-section" style="max-width: 900px; margin: 0 auto 4rem auto; border-top: 1px solid var(--border-color); padding-top: 3rem;">
+      <h2 style="font-size: 1.6rem; margin-bottom: 2rem; text-align: center;">Preguntas Frecuentes sobre Arbitraje</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Cuál es la diferencia real entre surebet y arbitraje?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Conceptualmente son casi lo mismo, pero el arbitraje deportivo es el término técnico y profesional. Implica un enfoque estructural: buscar ineficiencias de mercado, calcular el overround de los operadores y explotar la diferencia de márgenes.</p>
+        </div>
+        
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué es el overround o margen de la casa y cómo influye en el arbitraje?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">El overround es la suma de probabilidades implícitas en las cuotas de un operador. Normalmente suma más del 100% (ej: 106%), y ese 6% es la tajada garantizada del operador. En el arbitraje, buscas cruzar cuotas de operadores distintos donde el overround total caiga por debajo del 100%, devolviéndote la ventaja a ti.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Por qué es peligroso apostar centavos en el arbitraje?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">Porque un apostador común nunca mete $43.219 COP o $51.782 COP en un partido de tenis de mesa de la liga rusa. Esos montos tan precisos hacen saltar las alarmas automáticas de las casas de apuestas. Es mejor redondear a los $500 o $1.000 COP más cercanos.</p>
+        </div>
+
+        <div style="background-color: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">¿Qué pasa si una de las cuotas cambia a mitad de mi jugada?</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">A eso se le llama 'patinar' o quedarse expuesto. Si metes la apuesta A y cuando vas a meter la apuesta B la cuota bajó, tu arbitraje se rompe. Tienes dos opciones: meter la apuesta B asumiendo una pequeña pérdida matemática (comprar tu tranquilidad) o dejarla correr asumiendo el riesgo completo del partido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="card card-glow-green" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Domina el Método de Arbitraje Profesional</h3>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+        ¿Cansado de buscar cuotas a mano y que cambien antes de que apuestes? Aprende nuestro método completo de ventaja matemática y accede a herramientas premium.
+      </p>
+      <a href="sistema.html" class="btn btn-primary" style="display: inline-block;" data-bind="country-cta-btn" data-base-text="Ver Sistema VentajaBets">Ver Sistema VentajaBets ($69.900 COP)</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Valor Esperado y Apuestas Seguras | VentajaBets</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Calcula si tu apuesta conviene, cuánto apostar (Kelly/Stake), si es una apuesta segura (arbitraje) y si un bono es una trampa. ¡Evita regalar tu plata!">
+  <meta name="keywords" content="calculadora de valor esperado, calculadora apuestas seguras, arb bets, calculadora de arbitraje, calculadora kelly apuestas, bonos de apuestas, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/herramientas.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/herramientas.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/herramientas.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/herramientas.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/herramientas.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/herramientas.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/herramientas.html">
+  <meta property="og:title" content="Calculadora de Valor Esperado y Apuestas Seguras | VentajaBets">
+  <meta property="og:description" content="Calcula si tu apuesta conviene, cuánto apostar (Kelly/Stake), si es una apuesta segura (arbitraje) y si un bono es una trampa. ¡Evita regalar tu plata!">
+  <meta property="og:image" content="https://ventajabets.com/assets/stadium_soccer_ball.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/herramientas.html">
+  <meta property="twitter:title" content="Calculadora de Valor Esperado y Apuestas Seguras | VentajaBets">
+  <meta property="twitter:description" content="Calcula si tu apuesta conviene, cuánto apostar (Kelly/Stake), si es una apuesta segura (arbitraje) y si un bono es una trampa. ¡Evita regalar tu plata!">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/stadium_soccer_ball.png">
+
+  <!-- JSON-LD Structured Data (SoftwareApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/herramientas.html#ev-calculator",
+        "name": "Calculadora ¿Conviene o No? (Valor Esperado)",
+        "url": "https://ventajabets.com/herramientas.html#ev-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Calculadora matemática para estimar el valor esperado de una apuesta deportiva en base a cuotas y probabilidad estimada de ganar."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/herramientas.html#stake-calculator",
+        "name": "Calculador de Tamaño de Apuesta (Stake Size)",
+        "url": "https://ventajabets.com/herramientas.html#mc-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Herramienta de gestión de capital para apuestas deportivas que calcula el tamaño ideal de la jugada para proteger el saldo (bankroll)."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/herramientas.html#surebet-calculator",
+        "name": "Calculadora de Apuestas Seguras (Arbitraje)",
+        "url": "https://ventajabets.com/herramientas.html#arb-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Calculadora de arbitraje que analiza cuotas de dos casas diferentes para distribuir el capital y asegurar ganancias pase lo que pase."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/herramientas.html#bonus-calculator",
+        "name": "Calculador de Bono Trampa (Rollover)",
+        "url": "https://ventajabets.com/herramientas.html#roll-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Calculadora que evalúa si los requisitos de rollover de un bono de apuestas deportivas son una trampa o representan un beneficio real."
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link" id="nav-home">Inicio</a>
+        <a href="herramientas.html" class="nav-link active" id="nav-tools">Herramientas</a>
+        <a href="simuladores.html" class="nav-link" id="nav-simulators">Simuladores</a>
+        <a href="aprender.html" class="nav-link" id="nav-learn">Trucos</a>
+        <a href="recursos.html" class="nav-link" id="nav-resources">Recursos</a>
+        <a href="comunidad.html" class="nav-link" id="nav-community">Comunidad</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+        <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 3rem;" id="main-content">
+    <div class="section-header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 3rem;">
+      <div style="flex: 1 1 400px; min-width: 280px;">
+        <span class="tag">Herramientas de Análisis</span>
+        <h2>Herramientas simples para cuidar tu plata</h2>
+        <p>Calcula tus jugadas de forma directa. Ingresa tus números y descubre el resultado de inmediato.</p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="calculadora-surebets.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Calculadora Surebets</a>
+          <a href="rollover-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Calculadora Rollover</a>
+          <a href="criterio-kelly-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Kelly Pro</a>
+          <a href="valor-esperado-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Valor Esperado</a>
+        </div>
+      </div>
+      <div style="flex: 1 1 200px; max-width: 260px; display: flex; justify-content: center; width: 100%;">
+        <img src="assets/analysis_calculator.png" alt="VentajaBets Análisis y Cuentas" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: block; transform: rotate(-1deg);">
+      </div>
+    </div>
+
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-nav" id="calculators-tabs">
+      <button class="tab-btn active" data-target="tab-ev" id="tab-btn-ev">1. ¿Conviene o No la Apuesta?</button>
+      <button class="tab-btn" data-target="tab-mc" id="tab-btn-mc">2. ¿Te alcanza la plata o te quedas limpio?</button>
+      <button class="tab-btn" data-target="tab-arb" id="tab-btn-arb">3. Apuesta Segura (Arbitraje)</button>
+      <button class="tab-btn" data-target="tab-roll" id="tab-btn-roll">4. ¿El bono es trampa o es bueno?</button>
+      <button class="tab-btn" data-target="tab-implied" id="tab-btn-implied">5. Probabilidad Implícita</button>
+      <button class="tab-btn" data-target="tab-margin" id="tab-btn-margin">6. Margen de la Casa</button>
+      <button class="tab-btn" data-target="tab-parley" id="tab-btn-parley">7. Combinada / Parley</button>
+      <button class="tab-btn" data-target="tab-conv" id="tab-btn-conv">8. Conversor de Cuotas</button>
+    </div>
+
+    <!-- TAB 1: ¿CONVIENE O NO? -->
+    <div class="tab-panel active" id="tab-ev">
+      <span id="ev-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-ev-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">¿Conviene o No la Apuesta?</h3>
+          
+          <div class="form-group">
+            <label for="ev-odds">Cuota de la casa (Decimal, Ej: 2.40)</label>
+            <input type="number" step="0.01" min="1.02" class="form-control" id="ev-odds" value="2.40" placeholder="Ej: 2.40">
+          </div>
+
+          <div class="form-group">
+            <label for="ev-stake">¿Cuánto dinero apuestas tú? (Ej: 100000)</label>
+            <input type="number" class="form-control" id="ev-stake" value="100000" placeholder="Ej: 100000">
+          </div>
+
+          <div class="form-group slider-container">
+            <div class="slider-header">
+              <label for="ev-confidence">¿Qué tan seguro estás que ganas la jugada?</label>
+              <span class="slider-val" id="ev-confidence-val">45%</span>
+            </div>
+            <input type="range" min="0" max="100" class="range-slider" id="ev-confidence" value="45">
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-secondary);">
+              <span>Nada seguro (0%)</span>
+              <span>Dudo (50%)</span>
+              <span>Muy seguro (100%)</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateConvenience()" id="btn-calc-ev">Analizar Apuesta</button>
+        </div>
+
+        <div class="calc-results" id="ev-results">
+          <div class="results-placeholder">
+            <p>Escribe tu jugada a la izquierda y dale al botón de analizar para ver si conviene.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: ¿CUÁNTO ME TOCA APOSTAR? -->
+    <div class="tab-panel" id="tab-mc">
+      <span id="mc-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-mc-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">¿Te alcanza la plata o te quedas limpio?</h3>
+          
+          <div class="form-group">
+            <label for="sz-capital">¿Cuánta plata tienes hoy en total para jugar? (Ej: 500000)</label>
+            <input type="number" class="form-control" id="sz-capital" value="500000" placeholder="Ej: 500000">
+          </div>
+
+          <div class="form-group" id="sz-simple-inputs">
+            <label for="sz-security">¿Qué tan seguro estás de este partido?</label>
+            <select class="form-control" id="sz-security">
+              <option value="poco_seguro">Poco seguro (Arriesgas poco: 1% de tu plata)</option>
+              <option value="seguro" selected>Seguro (Arriesgas moderado: 3% de tu plata)</option>
+              <option value="muy_seguro">Muy seguro (Máximo recomendado: 5% de tu plata)</option>
+            </select>
+          </div>
+
+          <div style="margin: 1rem 0; display: flex; align-items: center;">
+            <input type="checkbox" id="sz-pro-mode" onchange="document.getElementById('sz-pro-inputs').style.display = this.checked ? 'block' : 'none'; document.getElementById('sz-simple-inputs').style.display = this.checked ? 'none' : 'block';" style="margin-right:0.5rem; transform:scale(1.15); cursor:pointer;">
+            <label for="sz-pro-mode" style="font-weight:600; cursor:pointer; font-size:0.9rem;">Modo Pro: calcula con Kelly</label>
+          </div>
+
+          <div id="sz-pro-inputs" style="display:none; border-top:1px solid var(--border-color); padding-top:1rem; margin-top:1rem;">
+            <div class="form-group">
+              <label for="sz-odds">Cuota del partido (Ej: 2.00)</label>
+              <input type="number" step="0.01" min="1.02" class="form-control" id="sz-odds" value="2.00" placeholder="Ej: 2.00">
+            </div>
+
+            <div class="form-group slider-container">
+              <div class="slider-header">
+                <label for="sz-confidence">¿Qué tan seguro estás que ganas la jugada? (Tu Probabilidad)</label>
+                <span class="slider-val" id="sz-confidence-val">55%</span>
+              </div>
+              <input type="range" min="1" max="99" class="range-slider" id="sz-confidence" value="55">
+            </div>
+
+            <div class="form-group">
+              <label for="sz-kelly-type">Modelo de Kelly</label>
+              <select class="form-control" id="sz-kelly-type">
+                <option value="completo">Kelly completo (Mayor riesgo, mayor crecimiento)</option>
+                <option value="medio" selected>Medio Kelly (Recomendado, menor volatilidad)</option>
+                <option value="cuarto">Cuarto Kelly (Conservador)</option>
+                <option value="conservador">Conservador brutal (Máximo 2% de tu caja)</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateStakeSize()" id="btn-calc-sz">Calcular mi Apuesta</button>
+        </div>
+
+        <div class="calc-results" id="sz-results">
+          <div class="results-placeholder">
+            <p>Ingresa tu plata disponible hoy para calcular una jugada segura y cuidar tu saldo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: APUESTA SEGURA -->
+    <div class="tab-panel" id="tab-arb">
+      <span id="arb-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-arb-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Apuesta Segura: Gana sin importar quién gane</h3>
+          
+          <div class="form-group">
+            <label for="arb-outcomes">Número de resultados posibles</label>
+            <select class="form-control" id="arb-outcomes" onchange="document.getElementById('arb-2-inputs').style.display = this.value === '2' ? 'block' : 'none'; document.getElementById('arb-3-inputs').style.display = this.value === '3' ? 'block' : 'none';">
+              <option value="2">2 resultados (Tenis, Ambos marcan, etc.)</option>
+              <option value="3">3 resultados (Fútbol Local/Empate/Visitante)</option>
+            </select>
+          </div>
+
+          <div id="arb-2-inputs">
+            <div class="form-group">
+              <label for="arb-odds-a">Cuota Evento Casa A (Ej: 2.15)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-a" value="2.15" placeholder="Ej: 2.15">
+            </div>
+            <div class="form-group">
+              <label for="arb-odds-b">Cuota Evento Casa B (Ej: 1.95)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-b" value="1.95" placeholder="Ej: 1.95">
+            </div>
+          </div>
+
+          <div id="arb-3-inputs" style="display:none;">
+            <div class="form-group">
+              <label for="arb-odds-l">Cuota Local (Ej: 3.50)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-l" value="3.50" placeholder="Ej: 3.50">
+            </div>
+            <div class="form-group">
+              <label for="arb-odds-e">Cuota Empate (Ej: 3.60)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-e" value="3.60" placeholder="Ej: 3.60">
+            </div>
+            <div class="form-group">
+              <label for="arb-odds-v">Cuota Visitante (Ej: 3.80)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="arb-odds-v" value="3.80" placeholder="Ej: 3.80">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="arb-stake">Plata total que vas a jugar hoy (Ej: 500000)</label>
+            <input type="number" class="form-control" id="arb-stake" value="500000" placeholder="Ej: 500000">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateSurebet()" id="btn-calc-arb">Buscar Apuesta Segura</button>
+        </div>
+
+        <div class="calc-results" id="arb-results">
+          <div class="results-placeholder">
+            <p>Calcula si las cuotas te permiten dividir tu dinero para ganar sin importar el resultado del partido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: ¿EL BONO ES BUENO? -->
+    <div class="tab-panel" id="tab-roll">
+      <span id="roll-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-roll-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">¿El bono es trampa o es bueno?</h3>
+          
+          <div class="form-group">
+            <label for="roll-bonus">Plata que te regalan de bono (Ej: 100000)</label>
+            <input type="number" class="form-control" id="roll-bonus" value="100000" placeholder="Ej: 100000">
+          </div>
+
+          <div class="form-group">
+            <label for="roll-deposit">Depósito requerido (Ej: 0 si es bono gratis)</label>
+            <input type="number" class="form-control" id="roll-deposit" value="0" placeholder="Ej: 0">
+          </div>
+
+          <div class="form-group">
+            <label for="roll-rollover">Veces que te exigen jugar esa plata (Rollover, Ej: 5)</label>
+            <input type="number" class="form-control" id="roll-rollover" value="5" placeholder="Ej: 5">
+          </div>
+
+          <div class="form-group">
+            <label for="roll-base">Base del Rollover</label>
+            <select class="form-control" id="roll-base">
+              <option value="solo_bono">Solo el monto del bono</option>
+              <option value="bono_deposito">Bono + Depósito</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="roll-edge">Margen estimado de la casa de apuestas (Edge)</label>
+            <select class="form-control" id="roll-edge">
+              <option value="0.03">3% (Margen muy bajo)</option>
+              <option value="0.05" selected>5% (Margen estándar)</option>
+              <option value="0.07">7% (Margen medio/alto)</option>
+              <option value="0.10">10% (Margen alto/robo)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="roll-contrib">Contribución del mercado</label>
+            <select class="form-control" id="roll-contrib">
+              <option value="100" selected>100% (Mercado habitual)</option>
+              <option value="50">50% (Restringido)</option>
+              <option value="25">25% (Muy restringido)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="roll-days">Días para liberar el bono (Ej: 30)</label>
+            <input type="number" class="form-control" id="roll-days" value="30" placeholder="Ej: 30">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateBonusRating()" id="btn-calc-roll">Revisar Bono</button>
+        </div>
+
+        <div class="calc-results" id="roll-results">
+          <div class="results-placeholder">
+            <p>Te decimos cuánta plata de verdad podrás retirar de un bono tras cumplir con las exigencias del operador.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: PROBABILIDAD IMPLÍCITA -->
+    <div class="tab-panel" id="tab-implied">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Probabilidad Implícita</h3>
+          <div class="form-group">
+            <label for="implied-odds">Cuota Decimal (Ej: 2.00)</label>
+            <input type="number" step="0.01" min="1.02" class="form-control" id="implied-odds" value="2.00" placeholder="Ej: 2.00">
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateImplicitProbability()">Convertir Cuota</button>
+        </div>
+        <div class="calc-results" id="implied-results">
+          <div class="results-placeholder">
+            <p>Introduce una cuota decimal para estimar el porcentaje real de victoria implícito de la casa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: MARGEN DE LA CASA -->
+    <div class="tab-panel" id="tab-margin">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Margen de la Casa</h3>
+          
+          <div class="form-group">
+            <label for="margin-outcomes">Mercado</label>
+            <select class="form-control" id="margin-outcomes" onchange="document.getElementById('margin-2-inputs').style.display = this.value === '2' ? 'block' : 'none'; document.getElementById('margin-3-inputs').style.display = this.value === '3' ? 'block' : 'none';">
+              <option value="2">2 resultados (Básquet, Tenis)</option>
+              <option value="3">3 resultados (Fútbol 1X2)</option>
+            </select>
+          </div>
+
+          <div id="margin-2-inputs">
+            <div class="form-group">
+              <label for="margin-odds-a">Cuota Opción A (Ej: 1.90)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="margin-odds-a" value="1.90">
+            </div>
+            <div class="form-group">
+              <label for="margin-odds-b">Cuota Opción B (Ej: 1.90)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="margin-odds-b" value="1.90">
+            </div>
+          </div>
+
+          <div id="margin-3-inputs" style="display:none;">
+            <div class="form-group">
+              <label for="margin-odds-l">Cuota Local (Ej: 2.10)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="margin-odds-l" value="2.10">
+            </div>
+            <div class="form-group">
+              <label for="margin-odds-e">Cuota Empate (Ej: 3.20)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="margin-odds-e" value="3.20">
+            </div>
+            <div class="form-group">
+              <label for="margin-odds-v">Cuota Visitante (Ej: 3.50)</label>
+              <input type="number" step="0.01" min="1.01" class="form-control" id="margin-odds-v" value="3.50">
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateHouseMargin()">Calcular Margen</button>
+        </div>
+        <div class="calc-results" id="margin-results">
+          <div class="results-placeholder">
+            <p>Calcula el porcentaje exacto que la casa te cobra por meter tus jugadas en este partido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: COMBINADA / PARLEY -->
+    <div class="tab-panel" id="tab-parley">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Calculadora Parley y Combinadas</h3>
+          
+          <div id="parley-odds-container">
+            <!-- Dynamic inputs here -->
+          </div>
+
+          <button class="btn btn-secondary btn-sm" onclick="addParleyOddInput()" style="margin-top:0.5rem; display:block; border-color:var(--primary); color:var(--primary);">+ Agregar Partido</button>
+
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="parley-stake">Plata que vas a apostar hoy (Ej: 10000)</label>
+            <input type="number" class="form-control" id="parley-stake" value="10000">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="calculateParley()">Calcular Combinada</button>
+        </div>
+        <div class="calc-results" id="parley-results">
+          <div class="results-placeholder">
+            <p>Calcula el acumulado de cuotas y mira las probabilidades reales antes de perder tu dinero en un parley.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 8: CONVERSOR DE CUOTAS -->
+    <div class="tab-panel" id="tab-conv">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Conversor Cuota ↔ Probabilidad</h3>
+          
+          <div class="form-group">
+            <label for="conv-decimal">Convertir Cuota Decimal en Porcentaje</label>
+            <input type="number" step="0.01" class="form-control" id="conv-decimal" oninput="convertOddsProb()" placeholder="Escribe cuota (Ej: 2.00)">
+            <p id="conv-decimal-result" style="font-size:0.85rem; color:var(--primary); margin-top:0.4rem; font-weight:600;"></p>
+          </div>
+
+          <div class="form-group" style="border-top:1px solid var(--border-color); padding-top:1rem; margin-top:1rem;">
+            <label for="conv-prob">Convertir Porcentaje en Cuota Justa</label>
+            <input type="number" step="0.1" class="form-control" id="conv-prob" oninput="convertOddsProb()" placeholder="Escribe porcentaje (Ej: 50)">
+            <p id="conv-prob-result" style="font-size:0.85rem; color:var(--primary); margin-top:0.4rem; font-weight:600;"></p>
+          </div>
+        </div>
+        <div class="calc-results">
+          <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+            <strong style="color:var(--primary); display:block; margin-bottom:0.5rem;">Fórmula de conversión:</strong>
+            - De cuota a probabilidad: <code style="background-color:rgba(0,0,0,0.3); padding:2px 4px; border-radius:3px;">1 / Cuota * 100</code><br>
+            - De probabilidad a cuota: <code style="background-color:rgba(0,0,0,0.3); padding:2px 4px; border-radius:3px;">100 / Probabilidad</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY LIST (DYNAMIC LOCALSTORAGE HISTORY) -->
+    <div class="calc-history-list">
+      <!-- Injected by scripts.js -->
+    </div>
+  </main>
+
+  <!-- ANCHORS AND SWITCH LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Connect slider to text display
+      const slider = document.getElementById('ev-confidence');
+      const valDisplay = document.getElementById('ev-confidence-val');
+      if (slider && valDisplay) {
+        slider.addEventListener('input', (e) => {
+          valDisplay.textContent = e.target.value + '%';
+        });
+      }
+
+      const szSlider = document.getElementById('sz-confidence');
+      const szValDisplay = document.getElementById('sz-confidence-val');
+      if (szSlider && szValDisplay) {
+        szSlider.addEventListener('input', (e) => {
+          szValDisplay.textContent = e.target.value + '%';
+        });
+      }
+
+      // Tab switcher
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      function activateTab(tabId) {
+        tabButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-target') === tabId);
+        });
+        tabPanels.forEach(panel => {
+          panel.classList.toggle('active', panel.getAttribute('id') === tabId);
+        });
+      }
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+          activateTab(target);
+          
+          let hash = '';
+          if (target === 'tab-ev') hash = '#ev-anchor';
+          else if (target === 'tab-mc') hash = '#mc-anchor';
+          else if (target === 'tab-arb') hash = '#arb-anchor';
+          else if (target === 'tab-roll') hash = '#roll-anchor';
+          else if (target === 'tab-implied') hash = '#implied-anchor';
+          else if (target === 'tab-margin') hash = '#margin-anchor';
+          else if (target === 'tab-parley') hash = '#parley-anchor';
+          else if (target === 'tab-conv') hash = '#conv-anchor';
+          history.pushState(null, null, hash);
+        });
+      });
+
+      function checkHash() {
+        const hash = window.location.hash;
+        if (hash === '#ev-anchor') activateTab('tab-ev');
+        else if (hash === '#mc-anchor') activateTab('tab-mc');
+        else if (hash === '#arb-anchor') activateTab('tab-arb');
+        else if (hash === '#roll-anchor') activateTab('tab-roll');
+        else if (hash === '#implied-anchor') activateTab('tab-implied');
+        else if (hash === '#margin-anchor') activateTab('tab-margin');
+        else if (hash === '#parley-anchor') activateTab('tab-parley');
+        else if (hash === '#conv-anchor') activateTab('tab-conv');
+      }
+
+      checkHash();
+      window.addEventListener('hashchange', checkHash);
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter">TW</a>
+          <a href="#" aria-label="Telegram">TG</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "VentajaBets",
+  "short_name": "VentajaBets",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0b0f19",
+  "background_color": "#0b0f19",
+  "display": "standalone",
+  "start_url": "/index.html"
+}

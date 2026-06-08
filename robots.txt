@@ -1,0 +1,13 @@
+# robots.txt for VentajaBets - SEO Optimized
+User-agent: *
+Allow: /
+Allow: /styles.css
+Allow: /scripts.js
+Allow: /assets/
+Allow: /sitemap.xml
+
+# Disallow admin or scratch folders
+Disallow: /scratch/
+Disallow: /private/
+
+Sitemap: https://ventajabets.com/sitemap.xml

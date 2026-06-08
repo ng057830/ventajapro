@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Apuestas y Exposición al Riesgo | VentajaBets</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Simula el factor suerte en rachas de apuestas deportivas, calcula tu bankroll con el criterio de Kelly y mide el riesgo de ruina matemática. ¡Juega inteligente!">
+  <meta name="keywords" content="simulador apuestas deportivas, simulador de suerte, medidor de ruina apuestas, criterio de kelly calculadora, simulador de bankroll, VentajaBets">
+  <meta name="author" content="VentajaBets">
+  
+  <link rel="canonical" href="https://ventajabets.com/simuladores.html">
+
+  <!-- Hreflang Tags for Multi-Country SEO -->
+  <link rel="alternate" hreflang="es-CO" href="https://ventajabets.com/simuladores.html?country=CO">
+  <link rel="alternate" hreflang="es-MX" href="https://ventajabets.com/simuladores.html?country=MX">
+  <link rel="alternate" hreflang="es-ES" href="https://ventajabets.com/simuladores.html?country=ES">
+  <link rel="alternate" hreflang="es-PE" href="https://ventajabets.com/simuladores.html?country=PE">
+  <link rel="alternate" hreflang="x-default" href="https://ventajabets.com/simuladores.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ventajabets.com/simuladores.html">
+  <meta property="og:title" content="Simulador de Apuestas y Exposición al Riesgo | VentajaBets">
+  <meta property="og:description" content="Simula el factor suerte en rachas de apuestas deportivas, calcula tu bankroll con el criterio de Kelly y mide el riesgo de ruina matemática. ¡Juega inteligente!">
+  <meta property="og:image" content="https://ventajabets.com/assets/stadium_soccer_ball.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ventajabets.com/simuladores.html">
+  <meta property="twitter:title" content="Simulador de Apuestas y Exposición al Riesgo | VentajaBets">
+  <meta property="twitter:description" content="Simula el factor suerte en rachas de apuestas deportivas, calcula tu bankroll con el criterio de Kelly y mide el riesgo de ruina matemática. ¡Juega inteligente!">
+  <meta property="twitter:image" content="https://ventajabets.com/assets/stadium_soccer_ball.png">
+
+  <!-- JSON-LD Structured Data (SoftwareApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/simuladores.html#luck-simulator",
+        "name": "Simulador de Suerte (10 Apuestas)",
+        "url": "https://ventajabets.com/simuladores.html#season-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Simulador que demuestra visualmente el efecto de rachas negativas y varianza en una serie de diez apuestas deportivas consecutivas."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/simuladores.html#kelly-simulator",
+        "name": "Simulador Criterio de Kelly (Bankroll)",
+        "url": "https://ventajabets.com/simuladores.html#kelly-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Simulador matemático basado en la fórmula del Criterio de Kelly para sugerir el porcentaje exacto a apostar de forma óptima según la ventaja del apostador."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ventajabets.com/simuladores.html#ruin-simulator",
+        "name": "Medidor de Riesgo de Ruina",
+        "url": "https://ventajabets.com/simuladores.html#ruin-anchor",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "COP"
+        },
+        "description": "Simulador que calcula la probabilidad matemática de perder el 100% de los fondos de apuestas (ruina) a lo largo del tiempo bajo ciertas cuotas y stakes."
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+        VENTAJA<span>BETS</span>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link" id="nav-home">Inicio</a>
+        <a href="herramientas.html" class="nav-link" id="nav-tools">Herramientas</a>
+        <a href="simuladores.html" class="nav-link active" id="nav-simulators">Simuladores</a>
+        <a href="aprender.html" class="nav-link" id="nav-learn">Trucos</a>
+        <a href="recursos.html" class="nav-link" id="nav-resources">Recursos</a>
+        <a href="comunidad.html" class="nav-link" id="nav-community">Comunidad</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="herramientas.html" class="btn btn-primary btn-sm" id="cta-header">Probar Suite</a>
+        <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container section" style="padding-top: 3rem;" id="main-content">
+    <div class="section-header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 3rem;">
+      <div style="flex: 1 1 400px; min-width: 280px;">
+        <span class="tag">Simuladores</span>
+        <h2>Simuladores de Riesgo y Suerte</h2>
+        <p>Comprueba qué tan rápido puedes perder tu dinero si juegas sin un límite o si tienes una mala racha.</p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="criterio-kelly-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Kelly Pro</a>
+          <a href="valor-esperado-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Calculadora de EV</a>
+          <a href="rollover-apuestas.html" style="font-size:0.8rem; text-decoration:underline; color:var(--primary);">Liberar Bonos</a>
+        </div>
+      </div>
+      <div style="flex: 1 1 200px; max-width: 260px; display: flex; justify-content: center; width: 100%;">
+        <img src="assets/stadium_soccer_ball.png" alt="VentajaBets Simuladores Deportivos" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: block;">
+      </div>
+    </div>
+
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-nav" id="simulators-tabs">
+      <button class="tab-btn active" data-target="tab-luck" id="tab-btn-luck">1. Simulador de Suerte</button>
+      <button class="tab-btn" data-target="tab-sizing" id="tab-btn-sizing">2. Cuánto Conviene Apostar</button>
+      <button class="tab-btn" data-target="tab-ruin" id="tab-btn-ruin">3. Riesgo de Quedar Limpio</button>
+      <button class="tab-btn" data-target="tab-gf" id="tab-btn-gf">4. La Falacia del Apostador</button>
+      <button class="tab-btn" data-target="tab-kvf" id="tab-btn-kvf">5. Kelly vs Apuesta Fija</button>
+      <button class="tab-btn" data-target="tab-sim-roll" id="tab-btn-sim-roll">6. Simulador de Rollover</button>
+      <button class="tab-btn" data-target="tab-df" id="tab-btn-df">7. El Favorito Peligroso</button>
+    </div>
+
+    <!-- TAB 1: SIMULADOR DE SUERTE -->
+    <div class="tab-panel active" id="tab-luck">
+      <span id="season-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-luck-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Prueba tu suerte</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Simula 10 apuestas seguidas a cuota 2.0 (50% de probabilidad) para ver si sales ganando o limpio.</p>
+          
+          <div class="form-group">
+            <label for="sim-capital">¿Con cuánta plata empiezas hoy? (Ej: 200000)</label>
+            <input type="number" class="form-control" id="sim-capital" value="200000" placeholder="Ej: 200000">
+          </div>
+
+          <div class="form-group">
+            <label for="sim-stake">¿Cuánto vas a apostar en cada jugada? (Ej: 30000)</label>
+            <input type="number" class="form-control" id="sim-stake" value="30000" placeholder="Ej: 30000">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="runLuckSimulation()" id="btn-calc-luck">Simular 10 Apuestas</button>
+        </div>
+
+        <div class="calc-results" id="sim-results">
+          <div class="results-placeholder" style="text-align: center;">
+            <div style="margin-bottom: 1.25rem; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color); max-width: 280px; margin-left: auto; margin-right: auto; box-shadow: var(--shadow-sm);">
+              <img src="assets/luck_simulator_dice.png" alt="Simulación de Suerte con Dados" style="width: 100%; display: block; height: auto;">
+            </div>
+            <p>Configura tu dinero inicial y tu jugada para simular el factor suerte en tiempo real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CUÁNTO CONVIENE APOSTAR -->
+    <div class="tab-panel" id="tab-sizing">
+      <span id="kelly-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-sizing-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Calculador de Tamaño de Apuesta</h3>
+          
+          <div class="form-group slider-container">
+            <div class="slider-header">
+              <label for="kel-confidence">¿Qué tan seguro estás que ganas la jugada? (0% al 100%)</label>
+              <span class="slider-val" id="kel-confidence-val">55%</span>
+            </div>
+            <input type="range" min="0" max="100" class="range-slider" id="kel-confidence" value="55">
+          </div>
+
+          <div class="form-group slider-container">
+            <div class="slider-header">
+              <label for="kel-odds">Cuota que paga la casa de apuestas (Odds)</label>
+              <span class="slider-val" id="kel-odds-val">2.00</span>
+            </div>
+            <input type="range" min="1.50" max="5.00" step="0.05" class="range-slider" id="kel-odds" value="2.00">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="runKellySimulator()" id="btn-calc-sizing">Calcular Tamaño Óptimo</button>
+        </div>
+
+        <div class="calc-results" id="kel-results">
+          <div class="results-placeholder">
+            <p>Calcula el porcentaje de dinero óptimo que deberías apostar según tu confianza y lo que paga la casa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: RIESGO DE QUEDAR LIMPIO -->
+    <div class="tab-panel" id="tab-ruin">
+      <span id="ruin-anchor" style="display:block; position:relative; top:-100px; visibility:hidden;"></span>
+      <div class="calc-wrapper">
+        <div class="calc-panel" id="panel-ruin-inputs">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Medidor de Ruina</h3>
+          
+          <div class="form-group">
+            <label for="ruin-capital">¿Cuánta plata tienes hoy para jugar? (Ej: 1000000)</label>
+            <input type="number" class="form-control" id="ruin-capital" value="1000000" placeholder="Ej: 1000000">
+          </div>
+
+          <div class="form-group">
+            <label for="ruin-stake">¿Cuánto apuestas por partido? (Ej: 100000)</label>
+            <input type="number" class="form-control" id="ruin-stake" value="100000" placeholder="Ej: 100000">
+          </div>
+
+          <div class="form-group slider-container">
+            <div class="slider-header">
+              <label for="ruin-confidence">¿Qué tan seguro estás en promedio? (%)</label>
+              <span class="slider-val" id="ruin-confidence-val">52%</span>
+            </div>
+            <input type="range" min="45" max="70" step="1" class="range-slider" id="ruin-confidence" value="52">
+          </div>
+
+          <button class="btn btn-primary btn-block" style="margin-top: 1.5rem;" onclick="runRuinSimulator()" id="btn-calc-ruin">Calcular Exposición</button>
+        </div>
+
+        <div class="calc-results" id="ruin-results">
+          <div class="results-placeholder">
+            <p>Descubre la probabilidad de perder todo tu dinero disponible si sigues apostando este monto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: LA FALACIA DEL APOSTADOR -->
+    <div class="tab-panel" id="tab-gf">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">La Falacia del Apostador</h3>
+          <div class="form-group">
+            <label for="gf-prob">Probabilidad real del evento % (Ej: 50)</label>
+            <input type="number" class="form-control" id="gf-prob" value="50">
+          </div>
+          <div class="form-group">
+            <label for="gf-trials">Número de pérdidas seguidas en racha (Ej: 5)</label>
+            <select class="form-control" id="gf-trials">
+              <option value="3">3 veces seguidas</option>
+              <option value="5" selected>5 veces seguidas</option>
+              <option value="8">8 veces seguidas</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:1.5rem;" onclick="runGamblersFallacy()">Verificar Tiro Siguiente</button>
+        </div>
+        <div class="calc-results" id="gf-results">
+          <div class="results-placeholder">
+            <p>Simula si el siguiente tiro de una racha perdedora realmente tiene más chances de ser ganador.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: KELLY VS APUESTA FIJA -->
+    <div class="tab-panel" id="tab-kvf">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Kelly vs Apuesta Fija</h3>
+          <div class="form-group">
+            <label for="kvf-capital">Capital Inicial (Ej: 100000)</label>
+            <input type="number" class="form-control" id="kvf-capital" value="100000">
+          </div>
+          <div class="form-group">
+            <label for="kvf-odds">Cuota promedio (Ej: 2.00)</label>
+            <input type="number" step="0.01" class="form-control" id="kvf-odds" value="2.00">
+          </div>
+          <div class="form-group">
+            <label for="kvf-confidence">Tu probabilidad estimada % (Ej: 55)</label>
+            <input type="number" class="form-control" id="kvf-confidence" value="55">
+          </div>
+          <div class="form-group">
+            <label for="kvf-fixed">Monto Apuesta Fija % de tu caja (Ej: 5)</label>
+            <input type="number" class="form-control" id="kvf-fixed" value="5">
+          </div>
+          <div class="form-group">
+            <label for="kvf-kelly-type">Modelo Kelly</label>
+            <select class="form-control" id="kvf-kelly-type">
+              <option value="completo">Kelly Completo</option>
+              <option value="medio" selected>Medio Kelly</option>
+              <option value="cuarto">Cuarto Kelly</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:1.5rem;" onclick="runKellyVsFixed()">Correr 200 Simulaciones</button>
+        </div>
+        <div class="calc-results" id="kvf-results">
+          <div class="results-placeholder">
+            <p>Compara el rendimiento acumulado de usar Kelly contra un porcentaje de apuesta fijo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: SIMULADOR DE ROLLOVER -->
+    <div class="tab-panel" id="tab-sim-roll">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">Simulador de Rollover</h3>
+          <div class="form-group">
+            <label for="sim-roll-bonus">Monto del Bono (Ej: 100000)</label>
+            <input type="number" class="form-control" id="sim-roll-bonus" value="100000">
+          </div>
+          <div class="form-group">
+            <label for="sim-roll-rollover">Rollover exigido (Ej: 10)</label>
+            <input type="number" class="form-control" id="sim-roll-rollover" value="10">
+          </div>
+          <div class="form-group">
+            <label for="sim-roll-edge">Margen de la casa (Edge)</label>
+            <select class="form-control" id="sim-roll-edge">
+              <option value="0.03">3% (Cuotas justas)</option>
+              <option value="0.05" selected>5% (Estándar)</option>
+              <option value="0.08">8% (Pésimo margen)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:1.5rem;" onclick="runRolloverSimulation()">Simular 200 carreras</button>
+        </div>
+        <div class="calc-results" id="sim-roll-results">
+          <div class="results-placeholder">
+            <p>Calcula estadísticamente las chances reales de terminar en pérdidas al intentar liberar este bono.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: EL FAVORITO PELIGROSO -->
+    <div class="tab-panel" id="tab-df">
+      <div class="calc-wrapper">
+        <div class="calc-panel">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.2rem; color: var(--primary);">El Favorito Peligroso</h3>
+          <div class="form-group">
+            <label for="df-odds">Cuota del favorito (Ej: 1.20)</label>
+            <input type="number" step="0.01" class="form-control" id="df-odds" value="1.20">
+          </div>
+          <div class="form-group">
+            <label for="df-confidence">Probabilidad real estimada % (Ej: 80)</label>
+            <input type="number" class="form-control" id="df-confidence" value="80">
+          </div>
+          <div class="form-group">
+            <label for="df-stake">Apuesta base (Ej: 100000)</label>
+            <input type="number" class="form-control" id="df-stake" value="100000">
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:1.5rem;" onclick="runDangerousFavorite()">Ver Expectativa</button>
+        </div>
+        <div class="calc-results" id="df-results">
+          <div class="results-placeholder">
+            <p>Mide la asimetría de arriesgar mucho dinero para cobrar una ganancia insignificante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY LIST (DYNAMIC LOCALSTORAGE HISTORY) -->
+    <div class="calc-history-list">
+      <!-- Injected by scripts.js -->
+    </div>
+  </main>
+
+  <!-- ANCHORS AND SWITCH LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Connect sliders to value displays
+      setupSliderDisplay('kel-confidence', 'kel-confidence-val', '%');
+      setupSliderDisplay('kel-odds', 'kel-odds-val', '');
+      setupSliderDisplay('ruin-confidence', 'ruin-confidence-val', '%');
+
+      // Tab switcher
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      function activateTab(tabId) {
+        tabButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-target') === tabId);
+        });
+        tabPanels.forEach(panel => {
+          panel.classList.toggle('active', panel.getAttribute('id') === tabId);
+        });
+      }
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+          activateTab(target);
+          
+          let hash = '';
+          if (target === 'tab-luck') hash = '#season-anchor';
+          else if (target === 'tab-sizing') hash = '#kelly-anchor';
+          else if (target === 'tab-ruin') hash = '#ruin-anchor';
+          else if (target === 'tab-gf') hash = '#gf-anchor';
+          else if (target === 'tab-kvf') hash = '#kvf-anchor';
+          else if (target === 'tab-sim-roll') hash = '#sim-roll-anchor';
+          else if (target === 'tab-df') hash = '#df-anchor';
+          history.pushState(null, null, hash);
+        });
+      });
+
+      function checkHash() {
+        const hash = window.location.hash;
+        if (hash === '#season-anchor') activateTab('tab-luck');
+        else if (hash === '#kelly-anchor') activateTab('tab-sizing');
+        else if (hash === '#ruin-anchor') activateTab('tab-ruin');
+        else if (hash === '#gf-anchor') activateTab('tab-gf');
+        else if (hash === '#kvf-anchor') activateTab('tab-kvf');
+        else if (hash === '#sim-roll-anchor') activateTab('tab-sim-roll');
+        else if (hash === '#df-anchor') activateTab('tab-df');
+      }
+
+      checkHash();
+      window.addEventListener('hashchange', checkHash);
+    });
+
+    function setupSliderDisplay(sliderId, displayId, suffix) {
+      const slider = document.getElementById(sliderId);
+      const display = document.getElementById(displayId);
+      if (slider && display) {
+        slider.addEventListener('input', (e) => {
+          let val = parseFloat(e.target.value);
+          let text = val.toFixed(1);
+          if (sliderId === 'kel-confidence' || sliderId === 'ruin-confidence') text = val.toFixed(0);
+          display.textContent = text + suffix;
+        });
+      }
+    }
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" id="logo-footer">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            VENTAJA<span>BETS</span>
+          </a>
+          <p>Herramientas de cálculo sencillas para ayudarte a cuidar tu plata en las apuestas y evitar errores comunes.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Top Calculadoras</h4>
+          <ul>
+            <li><a href="calculadora-surebets.html">Calculadora Surebets</a></li>
+            <li><a href="calculadora-arbitraje-apuestas.html">Arbitraje de Apuestas</a></li>
+            <li><a href="rollover-apuestas.html">Rollover Apuestas</a></li>
+            <li><a href="criterio-kelly-apuestas.html">Criterio de Kelly</a></li>
+            <li><a href="valor-esperado-apuestas.html">Valor Esperado</a></li>
+            <li><a href="calculadora-parley-combinadas.html">Calculadora Parley</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Simuladores</h4>
+          <ul>
+            <li><a href="simuladores.html#season-anchor">Simulador de suerte</a></li>
+            <li><a href="simuladores.html#kelly-anchor">Calculador Kelly</a></li>
+            <li><a href="simuladores.html#ruin-anchor">Riesgo de ruina</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Soporte & Legal</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.html#terms-anchor">Términos de Uso</a></li>
+            <li><a href="contacto.html#privacy-anchor">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" id="legal-footer-disclaimer">
+        <p style="margin-bottom:0.5rem; font-weight: 500;" data-bind="country-legal">Verifica la regulación del juego local en tu país</p>
+        <p style="margin-bottom:0.5rem; font-weight: 500;">VentajaBets es una herramienta que ayuda a apostadores a tomar decisiones informadas, cuidar su plata y evitar trampas comunes. No prometemos ganancias, prometemos claridad matemática.</p>
+        <p>Esta herramienta te ayuda a calcular, pero apostar siempre tiene riesgo de perder plata. Juega responsablemente.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VentajaBets. Todos los derechos reservados.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter">TW</a>
+          <a href="#" aria-label="Telegram">TG</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="country-config.js"></script>
+  <script src="site-config.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
