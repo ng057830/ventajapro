@@ -201,6 +201,12 @@
       <span>⚠️ Este sitio contiene información sobre mercados de predicción deportiva. Debes tener edad legal para participar en apuestas en tu país.</span>
     </div>
   </div>
+  <!-- STICKY AFFILIATE BANNER -->
+  <div class="aff-banner-top">
+    <span>🔥 Regístrate en Wplay - Bono 100% hasta $200.000</span>
+    <a href="#" class="aff-link" data-casa="wplay">Registrarme →</a>
+  </div>
+
 
   <!-- MAIN CONTENT -->
   <main class="container section" style="padding-top: 2rem;">
@@ -347,16 +353,16 @@
       </div>
     </section>
 
-      <!-- CALL TO ACTION DE AFILIADOS -->
-  <section class="card card-glow-green" id="affiliate-cta-section" style="padding: 2.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem auto;">
-    <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Prueba tus jugadas en operadores regulados</h3>
-    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
-      Regístrate en nuestros operadores recomendados, reclama tu bono de bienvenida y aplica la calculadora para jugar con ventaja matemática.
-    </p>
-    <div id="calculator-partners-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem;">
-      <!-- Se inyecta dinámicamente según el país desde scripts.js -->
+        <!-- CALL TO ACTION DE AFILIADOS (CTA BOX) -->
+  <div class="aff-cta-box" style="max-width: 900px; margin: 2rem auto 4rem auto;">
+    <h3>¿Listo para aplicar esta estrategia?</h3>
+    <p>Necesitas cuentas en múltiples casas para comparar cuotas y encontrar surebets</p>
+    <div class="aff-grid">
+      <a href="#" data-casa="wplay" class="aff-card">Wplay - Bono 100%</a>
+      <a href="#" data-casa="rushbet" class="aff-card">Rushbet - $50.000 gratis</a>
+      <a href="#" data-casa="betplay" class="aff-card">Betplay - Apuesta segura</a>
     </div>
-  </section>
+  </div>
 
   </main>
 
@@ -419,6 +425,7 @@
 
   <script src="country-config.js"></script>
   <script src="site-config.js"></script>
+    <script src="config/affiliates.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>

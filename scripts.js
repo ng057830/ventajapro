@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Render history if the elements exist on the page
   renderHistory();
+  initAffiliateLinks();
 });
 
 
@@ -414,6 +415,7 @@ window.calculateConvenience = function() {
     </p>
   `;
 
+  window.trackCalculatorUsage('ev_calculator', true);
   saveCalculation('Valor Esperado', { Cuota: odds, Apuesta: stake, Confianza: confidence + '%' }, verdict);
   window.showToast('Valor Esperado calculado');
 };
@@ -515,6 +517,7 @@ window.calculateStakeSize = function() {
     </p>
   `;
 
+  window.trackCalculatorUsage('kelly_stake', true);
   saveCalculation('Gestión Stake', { Capital: formatCOP(capital), Modo: proMode ? 'Kelly Pro' : 'Simple' }, formatCOP(recommendedBet));
   window.showToast('Stake óptimo calculado');
 };
@@ -592,7 +595,8 @@ window.calculateSurebet = function() {
       </p>
       ${totalStake < 20000 ? '<p style="color:var(--secondary); font-size:0.75rem;">Nota: Con montos muy pequeños, el redondeo puede comerse la ganancia.</p>' : ''}
     `;
-    saveCalculation('Surebet 2R', { Total: formatCOP(totalStake), Cuotas: `${oddsA}/${oddsB}` }, `+${formatPercent(finalRoi)}`);
+    window.trackCalculatorUsage('surebets', true);
+  saveCalculation('Surebet 2R', { Total: formatCOP(totalStake), Cuotas: `${oddsA}/${oddsB}` }, `+${formatPercent(finalRoi)}`);
   } else {
     // 3 Outcomes (1X2 Football)
     const oddsL = parseNumber('arb-odds-l');
@@ -660,7 +664,8 @@ window.calculateSurebet = function() {
       </p>
       ${totalStake < 20000 ? '<p style="color:var(--secondary); font-size:0.75rem;">Nota: Con montos muy pequeños, el redondeo puede comerse la ganancia.</p>' : ''}
     `;
-    saveCalculation('Surebet 3R', { Total: formatCOP(totalStake), Cuotas: `${oddsL}/${oddsE}/${oddsV}` }, `+${formatPercent(finalRoi)}`);
+    window.trackCalculatorUsage('surebets', true);
+  saveCalculation('Surebet 3R', { Total: formatCOP(totalStake), Cuotas: `${oddsL}/${oddsE}/${oddsV}` }, `+${formatPercent(finalRoi)}`);
   }
 
   window.showToast('Cálculo de arbitraje listo');
@@ -730,6 +735,7 @@ window.calculateBonusRating = function() {
     </div>
   `;
 
+  window.trackCalculatorUsage('rollover', true);
   saveCalculation('Rollover Bono', { Bono: formatCOP(bonus), Rollover: rollover }, verdict);
   window.showToast('Análisis de rollover finalizado');
 };
@@ -767,6 +773,7 @@ window.calculateImplicitProbability = function() {
     </div>
   `;
 
+  window.trackCalculatorUsage('implicit_probability', true);
   saveCalculation('Probabilidad Implícita', { Cuota: odds }, formatPercent(probability));
   window.showToast('Cálculo implícito listo');
 };
@@ -825,6 +832,7 @@ window.calculateHouseMargin = function() {
     </p>
   `;
 
+  window.trackCalculatorUsage('house_margin', true);
   saveCalculation('Margen Casa', { Resultados: outcomes + 'R' }, formatPercent(overround));
   window.showToast('Margen de casa calculado');
 };
@@ -928,6 +936,7 @@ window.calculateParley = function() {
     </div>
   `;
 
+  window.trackCalculatorUsage('parley', true);
   saveCalculation('Combinada Parley', { Partidos: inputs.length, Stake: formatCOP(stake) }, totalOdds.toFixed(2));
   window.showToast('Combinada calculada');
 };
@@ -1537,22 +1546,59 @@ window.renderMethodPartners = function(country) {
   `).join('');
 };
 
+// Mapeador dinámico de enlaces de afiliado con data-casa
+function initAffiliateLinks() {
+  if (typeof AFFILIATES !== 'undefined') {
+    document.querySelectorAll('[data-casa]').forEach(link => {
+      const casa = link.getAttribute('data-casa');
+      link.href = AFFILIATES[casa] || '#';
+      link.target = '_blank';
+      link.rel = 'nofollow sponsored';
+    });
+  }
+}
+
+// Tracking para el uso de calculadoras en GA4
+window.trackCalculatorUsage = function(toolName, hasResult) {
+  if (typeof gtag === 'function') {
+    gtag('event', 'calculator_used', {
+      'tool_name': toolName,
+      'has_result': hasResult ? 'true' : 'false'
+    });
+  }
+  console.log(`[Analytics] Tracked Calculator Usage: ${toolName} -> result: ${hasResult}`);
+};
+
 // Tracking automático de clics a enlaces patrocinados / afiliados en GA4
 document.addEventListener('click', (e) => {
-  const sponsoredLink = e.target.closest('a[rel*="sponsored"]') || e.target.closest('.partner-affiliate-link');
+  const sponsoredLink = e.target.closest('a[rel*="sponsored"]') || e.target.closest('.partner-affiliate-link') || e.target.closest('[data-casa]');
   if (sponsoredLink) {
-    const partnerName = sponsoredLink.getAttribute('data-partner-name') || sponsoredLink.innerText || 'Unknown';
+    const dataCasa = sponsoredLink.getAttribute('data-casa');
+    const partnerName = dataCasa || sponsoredLink.getAttribute('data-partner-name') || sponsoredLink.innerText || 'Unknown';
     const partnerUrl = sponsoredLink.getAttribute('href');
     
     // Enviar evento de conversión a GA4
     if (typeof gtag === 'function') {
-      gtag('event', 'click_afiliado', {
-        'event_category': 'Afiliados',
-        'event_label': partnerName.trim(),
-        'partner_url': partnerUrl
-      });
+      if (dataCasa) {
+        // Evento de afiliados con data-casa del informe
+        const location = sponsoredLink.closest('.aff-banner-top') ? 'top-banner' : (sponsoredLink.closest('.aff-cta-box') ? 'post-calculator' : 'other');
+        const pageName = window.location.pathname.split('/').pop().replace('.html', '').replace('calculadora-', '').replace('-apuestas', '');
+        gtag('event', 'affiliate_click', {
+          'casa': dataCasa,
+          'location': location,
+          'calculadora': pageName
+        });
+      } else {
+        // Evento de afiliados general
+        gtag('event', 'click_afiliado', {
+          'event_category': 'Afiliados',
+          'event_label': partnerName.trim(),
+          'partner_url': partnerUrl
+        });
+      }
     }
-    console.log(`[Analytics] Tracked Affiliate Click: ${partnerName.trim()} -> ${partnerUrl}`);
+    const debugName = dataCasa ? `[Data-Casa] ${dataCasa}` : partnerName.trim();
+    console.log(`[Analytics] Tracked Affiliate Click: ${debugName} -> ${partnerUrl}`);
   }
 });
 
