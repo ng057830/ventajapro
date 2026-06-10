@@ -974,6 +974,303 @@ window.convertOddsProb = function() {
    4 NEW SIMULATORS
    ========================================================================== */
 
+// 1. Simulador de Suerte (10 Apuestas)
+window.runLuckSimulation = function() {
+  const capitalInput = parseNumber('sim-capital');
+  const stakeInput = parseNumber('sim-stake');
+  const resultsBox = document.getElementById('sim-results');
+
+  if (!resultsBox) return;
+
+  if (isNaN(capitalInput) || capitalInput <= 0) {
+    window.showToast('Ingresa un capital inicial válido (mayor a $0)', 'error');
+    return;
+  }
+  if (isNaN(stakeInput) || stakeInput <= 0) {
+    window.showToast('Ingresa un valor de apuesta válido (mayor a $0)', 'error');
+    return;
+  }
+  if (stakeInput > capitalInput) {
+    window.showToast('La apuesta no puede ser mayor que tu capital inicial', 'error');
+    return;
+  }
+
+  const odds = 2.0;
+  const winProb = 0.5;
+  let currentBalance = capitalInput;
+  let stepsHtml = '';
+  let winsCount = 0;
+  
+  stepsHtml += `
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; text-align: left;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-secondary);">
+          <th style="padding: 0.5rem 0.25rem;">Nº</th>
+          <th style="padding: 0.5rem 0.25rem;">Monto</th>
+          <th style="padding: 0.5rem 0.25rem;">Resultado</th>
+          <th style="padding: 0.5rem 0.25rem; text-align: right;">Saldo</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  for (let i = 1; i <= 10; i++) {
+    if (currentBalance < stakeInput) {
+      stepsHtml += `
+        <tr style="border-bottom: 1px solid var(--border-color); opacity: 0.6;">
+          <td style="padding: 0.5rem 0.25rem;">${i}</td>
+          <td style="padding: 0.5rem 0.25rem;" colspan="2"><em>Bancarrota / Sin saldo suficiente</em></td>
+          <td style="padding: 0.5rem 0.25rem; text-align: right; color: var(--danger); font-weight: bold;">${formatCOP(currentBalance)}</td>
+        </tr>
+      `;
+      continue;
+    }
+
+    const win = Math.random() < winProb;
+    const balanceBefore = currentBalance;
+    let payout = 0;
+    let resultText = '';
+    
+    if (win) {
+      winsCount++;
+      payout = stakeInput * odds;
+      currentBalance = balanceBefore - stakeInput + payout;
+      resultText = '<span style="color: var(--primary); font-weight: bold;">Ganado ✅</span>';
+    } else {
+      currentBalance = balanceBefore - stakeInput;
+      resultText = '<span style="color: var(--danger); font-weight: bold;">Perdido ❌</span>';
+    }
+
+    stepsHtml += `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 0.5rem 0.25rem;">${i}</td>
+        <td style="padding: 0.5rem 0.25rem;">${formatCOP(stakeInput)}</td>
+        <td style="padding: 0.5rem 0.25rem;">${resultText}</td>
+        <td style="padding: 0.5rem 0.25rem; text-align: right; font-weight: 500;">${formatCOP(currentBalance)}</td>
+      </tr>
+    `;
+  }
+
+  stepsHtml += `
+      </tbody>
+    </table>
+  `;
+
+  const profitLoss = currentBalance - capitalInput;
+  const profitLossPct = (profitLoss / capitalInput) * 100;
+  
+  let verdictText = '';
+  let verdictClass = '';
+  
+  if (profitLoss > 0) {
+    verdictText = `Ganancia: +${formatCOP(profitLoss)} (${formatPercent(profitLossPct)})`;
+    verdictClass = 'big-verdict-positive';
+  } else if (profitLoss < 0) {
+    verdictText = `Pérdida: ${formatCOP(profitLoss)} (${formatPercent(profitLossPct)})`;
+    verdictClass = 'big-verdict-negative';
+  } else {
+    verdictText = 'Quedaste a mano ($0.0)';
+    verdictClass = 'big-verdict-warning';
+  }
+
+  resultsBox.innerHTML = `
+    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary);">Resultado de la Simulación</h3>
+    <div class="big-verdict-box ${verdictClass}" style="font-size: 1.1rem; padding: 0.8rem; margin-bottom: 1rem;">
+      ${verdictText}
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+      De 10 apuestas acertaste <strong>${winsCount}</strong> y fallaste <strong>${10 - winsCount}</strong>. Esto demuestra cómo rachas de varianza a corto plazo determinan tus resultados inmediatos.
+    </p>
+    ${stepsHtml}
+  `;
+
+  window.trackCalculatorUsage('luck_simulator', true);
+  saveCalculation('Simulador Suerte', { Capital: formatCOP(capitalInput), Stake: formatCOP(stakeInput) }, `${winsCount} aciertos / final ${formatCOP(currentBalance)}`);
+  window.showToast('Simulación de suerte completada');
+};
+
+// 2. Simulador Criterio de Kelly (Bankroll)
+window.runKellySimulator = function() {
+  const confidence = parseNumber('kel-confidence');
+  const odds = parseNumber('kel-odds');
+  const resultsBox = document.getElementById('kel-results');
+
+  if (!resultsBox) return;
+
+  if (isNaN(confidence) || confidence < 0 || confidence > 100) {
+    window.showToast('Por favor ajusta la confianza en el control deslizante.', 'error');
+    return;
+  }
+  if (!validateOdds(odds)) {
+    window.showToast('La cuota debe ser mayor a 1.01', 'error');
+    return;
+  }
+
+  const p = confidence / 100;
+  const b = odds - 1;
+  const kellyFraction = (odds * p - 1) / (odds - 1);
+
+  if (kellyFraction <= 0) {
+    resultsBox.innerHTML = `
+      <div class="big-verdict-box big-verdict-negative" style="font-size: 1.1rem; padding: 1rem; margin-bottom: 1rem;">
+        ❌ 0.0% (Expectativa Negativa)
+      </div>
+      <p class="explanation-text" style="font-size:0.9rem;">
+        Con una probabilidad del <strong>${confidence}%</strong> y una cuota de <strong>${odds.toFixed(2)}</strong>, la apuesta tiene valor esperado negativo. <strong>No conviene apostar nada.</strong>
+      </p>
+      <div style="font-size:0.8rem; color:var(--text-muted); border-top:1px solid var(--border-color); padding-top:0.75rem; margin-top:0.75rem; line-height:1.4;">
+        Para tener valor en esta cuota de ${odds.toFixed(2)}, necesitas una probabilidad de acierto mayor al <strong>${((1 / odds) * 100).toFixed(1)}%</strong>.
+      </div>
+    `;
+    window.trackCalculatorUsage('kelly_simulator', false);
+    saveCalculation('Simulador Kelly', { Confianza: confidence + '%', Cuota: odds }, '0% (EV Negativo)');
+    return;
+  }
+
+  const fullKelly = kellyFraction * 100;
+  const halfKelly = fullKelly * 0.5;
+  const quarterKelly = fullKelly * 0.25;
+
+  let warningText = '';
+  let verdictClass = 'big-verdict-positive';
+
+  if (fullKelly > 15) {
+    verdictClass = 'big-verdict-warning';
+    warningText = `
+      <div style="background-color: rgba(220,53,69,0.1); border: 1px solid var(--danger); border-radius: var(--radius-sm); padding: 0.6rem; color: var(--danger); font-size: 0.8rem; margin-top: 1rem;">
+        ⚠️ <strong>Peligro:</strong> Kelly completo sugiere apostar más del 15% de tu caja (${fullKelly.toFixed(1)}%). En apuestas reales esto se considera altísimo riesgo. Te sugerimos usar <strong>Medio Kelly</strong> o <strong>Cuarto Kelly</strong> para mitigar la varianza.
+      </div>
+    `;
+  }
+
+  resultsBox.innerHTML = `
+    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary);">Gestión de Capital Optimizada</h3>
+    <div class="big-verdict-box ${verdictClass}" style="font-size: 1.15rem; padding: 0.8rem; margin-bottom: 1rem;">
+      Medio Kelly Sugerido: ${halfKelly.toFixed(1)}%
+    </div>
+    <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.6rem;">
+      <p>El criterio de Kelly ayuda a maximizar el crecimiento de tu capital en el largo plazo reduciendo el riesgo de quiebra. Aquí tienes las opciones:</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 0.4rem; border-top: 1px solid var(--border-color); padding-top: 0.6rem; margin-top: 0.4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span><strong>Kelly Completo:</strong> (Máximo riesgo)</span>
+          <strong style="color: var(--secondary);">${fullKelly.toFixed(1)}%</strong>
+        </div>
+        <div class="progress-bar" style="background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden;">
+          <div style="background: var(--secondary); height: 100%; width: ${Math.min(fullKelly, 100)}%;"></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span><strong>Medio Kelly:</strong> (Recomendado estándar)</span>
+          <strong style="color: var(--primary);">${halfKelly.toFixed(1)}%</strong>
+        </div>
+        <div class="progress-bar" style="background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden;">
+          <div style="background: var(--primary); height: 100%; width: ${Math.min(halfKelly, 100)}%;"></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span><strong>Cuarto Kelly:</strong> (Perfil Conservador)</span>
+          <strong style="color: var(--text-primary);">${quarterKelly.toFixed(1)}%</strong>
+        </div>
+        <div class="progress-bar" style="background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden;">
+          <div style="background: var(--text-muted); height: 100%; width: ${Math.min(quarterKelly, 100)}%;"></div>
+        </div>
+      </div>
+    </div>
+    ${warningText}
+  `;
+
+  window.trackCalculatorUsage('kelly_simulator', true);
+  saveCalculation('Simulador Kelly', { Confianza: confidence + '%', Cuota: odds }, `Sug: ${halfKelly.toFixed(1)}%`);
+  window.showToast('Kelly óptimo calculado');
+};
+
+// 3. Medidor de Riesgo de Ruina
+window.runRuinSimulator = function() {
+  const capital = parseNumber('ruin-capital');
+  const stake = parseNumber('ruin-stake');
+  const confidence = parseNumber('ruin-confidence');
+  const resultsBox = document.getElementById('ruin-results');
+
+  if (!resultsBox) return;
+
+  if (isNaN(capital) || capital <= 0) {
+    window.showToast('Ingresa un capital inicial válido.', 'error');
+    return;
+  }
+  if (isNaN(stake) || stake <= 0) {
+    window.showToast('Ingresa un valor de apuesta válido.', 'error');
+    return;
+  }
+  if (stake > capital) {
+    window.showToast('El stake por partido no puede superar tu capital total.', 'error');
+    return;
+  }
+
+  const p = confidence / 100;
+  const q = 1 - p;
+  const N = capital / stake;
+
+  let ruinProb = 0;
+  if (p <= 0.5) {
+    ruinProb = 1.0;
+  } else {
+    ruinProb = Math.pow(q / p, N);
+  }
+
+  const ruinPct = ruinProb * 100;
+
+  let verdict = '';
+  let verdictClass = '';
+  let riskExplanation = '';
+
+  if (ruinPct > 50) {
+    verdict = 'Riesgo Crítico / Extremo 🚨';
+    verdictClass = 'big-verdict-negative';
+    riskExplanation = `Tu probabilidad de perder todo tu bankroll es del <strong>${formatPercent(ruinPct)}</strong>. Tu tamaño de apuesta (${formatPercent((stake / capital) * 100)} del total) es demasiado agresivo para tu probabilidad de acierto del ${confidence}%.`;
+  } else if (ruinPct >= 10) {
+    verdict = 'Riesgo Moderado ⚠️';
+    verdictClass = 'big-verdict-warning';
+    riskExplanation = `La probabilidad de ruina es del <strong>${formatPercent(ruinPct)}</strong>. Aunque tienes una probabilidad de acierto a favor (${confidence}%), una mala racha prolongada tiene chances reales de liquidar tu saldo. Considera bajar tu stake.`;
+  } else {
+    verdict = 'Riesgo Bajo / Controlado ✅';
+    verdictClass = 'big-verdict-positive';
+    riskExplanation = `Tu probabilidad de ruina es bajísima: <strong>${formatPercent(ruinPct)}</strong>. Tu gestión de banca es sólida y está bien equilibrada con tu probabilidad de acierto. ¡Sigue así!`;
+  }
+
+  resultsBox.innerHTML = `
+    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary);">Análisis del Riesgo de Ruina</h3>
+    <div class="big-verdict-box ${verdictClass}" style="font-size: 1.1rem; padding: 0.8rem; margin-bottom: 1rem;">
+      Probabilidad de Ruina: ${formatPercent(ruinPct)}
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+      ${riskExplanation}
+    </p>
+    <div style="font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem;">
+      <div style="display: flex; justify-content: space-between;">
+        <span>Relación Capital/Stake:</span>
+        <strong>${N.toFixed(1)} unidades de banca</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <span>Porcentaje de stake por apuesta:</span>
+        <strong>${((stake / capital) * 100).toFixed(1)}% del capital</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <span>Relación ganancia/pérdida (implicito):</span>
+        <strong>${(p/q).toFixed(2)}</strong>
+      </div>
+    </div>
+  `;
+
+  window.trackCalculatorUsage('ruin_simulator', true);
+  saveCalculation('Medidor Ruina', { Capital: formatCOP(capital), Stake: formatCOP(stake), Acierto: confidence + '%' }, `Ruina: ${formatPercent(ruinPct)}`);
+  window.showToast('Riesgo de ruina calculado');
+};
+
 // A. Simulador de Falacia del Apostador
 window.runGamblersFallacy = function() {
   const prob = parseNumber('gf-prob') || 50;
@@ -1235,50 +1532,18 @@ window.handleGeneralContact = function(e) {
 const DEFAULT_COUNTRY = 'CO';
 
 window.getUserCountry = function() {
-  let country = localStorage.getItem('vb_country');
-  
-  // Si hay un query parameter ?country=XX, lo forzamos y lo guardamos
-  const urlParams = new URLSearchParams(window.location.search);
-  const qCountry = urlParams.get('country');
-  if (qCountry && window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[qCountry.toUpperCase()]) {
-    country = qCountry.toUpperCase();
-    localStorage.setItem('vb_country', country);
-  }
-  
-  return country || null;
+  // Forzado a Colombia para cumplir con la exclusividad nacional
+  return 'CO';
 };
 
 window.setUserCountry = function(country) {
-  if (window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[country.toUpperCase()]) {
-    localStorage.setItem('vb_country', country.toUpperCase());
-    // Recargar la página para aplicar los cambios en todo el sitio
-    window.location.reload();
-  }
+  // Forzado a Colombia
+  localStorage.setItem('vb_country', 'CO');
 };
 
 window.initCountrySystem = function() {
-  const currentCountry = window.getUserCountry();
-  if (currentCountry) {
-    window.renderCountryContent(currentCountry);
-  } else {
-    // Si no hay país definido, llamamos a la API de geolocalización
-    fetch('https://ipapi.co/json/')
-      .then(response => response.json())
-      .then(data => {
-        let countryCode = data.country_code ? data.country_code.toUpperCase() : DEFAULT_COUNTRY;
-        // Validar si el país está soportado, de lo contrario usar DEFAULT
-        if (window.COUNTRY_CONFIG && !window.COUNTRY_CONFIG[countryCode]) {
-          countryCode = 'DEFAULT';
-        }
-        localStorage.setItem('vb_country', countryCode);
-        window.renderCountryContent(countryCode);
-      })
-      .catch(err => {
-        console.warn('Fallo en geolocalización de ipapi.co. Usando DEFAULT.');
-        localStorage.setItem('vb_country', 'DEFAULT');
-        window.renderCountryContent('DEFAULT');
-      });
-  }
+  // Siempre inicializar y renderizar para Colombia
+  window.renderCountryContent('CO');
 };
 
 window.renderCountryContent = function(country) {
@@ -1370,53 +1635,10 @@ window.renderCountryContent = function(country) {
 };
 
 window.renderCountrySelector = function(country) {
-  // Buscar o insertar el contenedor del selector en el header
-  const headerContainer = document.querySelector('.header-container');
-  if (!headerContainer) return;
-  
-  let selectorWrapper = document.getElementById('country-selector-wrapper');
-  if (!selectorWrapper) {
-    selectorWrapper = document.createElement('div');
-    selectorWrapper.id = 'country-selector-wrapper';
-    selectorWrapper.style.cssText = 'position: relative; display: flex; align-items: center; margin-left: 0.5rem;';
-    
-    // Insertarlo antes de las acciones del header o al final del nav
-    const actions = document.querySelector('.header-actions');
-    if (actions) {
-      actions.parentNode.insertBefore(selectorWrapper, actions);
-    } else {
-      headerContainer.appendChild(selectorWrapper);
-    }
-  }
-
-  const currentConfig = (window.COUNTRY_CONFIG && window.COUNTRY_CONFIG[country]) ? window.COUNTRY_CONFIG[country] : window.COUNTRY_CONFIG['DEFAULT'];
-  
-  // Renderizar desplegable de banderas
-  selectorWrapper.innerHTML = `
-    <button id="btn-country-select" style="font-size: 1.25rem; cursor: pointer; padding: 0.25rem 0.5rem; display: flex; align-items: center; gap: 0.25rem;" title="Cambiar País: ${currentConfig.name}">
-      <span>${currentConfig.flag}</span>
-      <span style="font-size: 0.75rem; color: var(--text-secondary);">▼</span>
-    </button>
-    <div id="country-dropdown-list" style="display: none; position: absolute; top: 100%; right: 0; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-md); z-index: 1200; width: 160px; padding: 0.5rem 0; margin-top: 0.5rem;">
-      <a href="#" onclick="event.preventDefault(); window.setUserCountry('CO');" onmouseover="this.style.backgroundColor='var(--bg-card-hover)'" onmouseout="this.style.backgroundColor='transparent'" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; font-size: 0.9rem; color: var(--text-primary); transition: var(--transition);">🇨🇴 Colombia</a>
-      <a href="#" onclick="event.preventDefault(); window.setUserCountry('MX');" onmouseover="this.style.backgroundColor='var(--bg-card-hover)'" onmouseout="this.style.backgroundColor='transparent'" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; font-size: 0.9rem; color: var(--text-primary); transition: var(--transition);">🇲🇽 México</a>
-      <a href="#" onclick="event.preventDefault(); window.setUserCountry('ES');" onmouseover="this.style.backgroundColor='var(--bg-card-hover)'" onmouseout="this.style.backgroundColor='transparent'" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; font-size: 0.9rem; color: var(--text-primary); transition: var(--transition);">🇪🇸 España</a>
-      <a href="#" onclick="event.preventDefault(); window.setUserCountry('PE');" onmouseover="this.style.backgroundColor='var(--bg-card-hover)'" onmouseout="this.style.backgroundColor='transparent'" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; font-size: 0.9rem; color: var(--text-primary); transition: var(--transition);">🇵🇪 Perú</a>
-      <a href="#" onclick="event.preventDefault(); window.setUserCountry('DEFAULT');" onmouseover="this.style.backgroundColor='var(--bg-card-hover)'" onmouseout="this.style.backgroundColor='transparent'" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; font-size: 0.9rem; color: var(--text-primary); transition: var(--transition);">🌐 Internacional</a>
-    </div>
-  `;
-
-  // Toggle dropdown logic
-  const btn = document.getElementById('btn-country-select');
-  const dropdown = document.getElementById('country-dropdown-list');
-  if (btn && dropdown) {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    });
-    document.addEventListener('click', () => {
-      dropdown.style.display = 'none';
-    });
+  // Sitio exclusivo para Colombia. No mostrar selector de banderas ni dropdown.
+  const selectorWrapper = document.getElementById('country-selector-wrapper');
+  if (selectorWrapper) {
+    selectorWrapper.remove();
   }
 };
 
